@@ -12,10 +12,16 @@
 <script>
 import Header from "./components/Header.vue";
 import Home from "@/views/Home";
+
 export default {
   components: {
     Header,
     Home,
+  },
+  watch: {
+    $route(to) {
+      document.title = `${to.meta.title}`;
+    },
   },
 };
 </script>
