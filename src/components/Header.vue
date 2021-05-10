@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-row sm:flex-row justify-between items-center">
+  <div class="flex flex-row sm:flex-row m-4 justify-between items-center">
     <router-link to="/">
       <a>
-        <h1 class="text-xl font-bold cursor-pointer pl-2 pt-2 h-12">
+        <h1 class="self-center text-xl font-bold cursor-pointer">
           Insider
           <span class="text-purple-600"> Shibu🐕🚀🚀 </span>
         </h1>
