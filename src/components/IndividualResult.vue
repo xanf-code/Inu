@@ -4,17 +4,15 @@
     v-for="individual in insider"
     :key="individual._id"
   >
-    <router-link :to="'/info/' + individual.insiderName">
-      <InsiderCard :result="individual" />
-    </router-link>
+    <IndividualInsiderCard :result="individual" />
   </div>
 </template>
 
 <script>
-import InsiderCard from "@/components/InsiderCard";
+import IndividualInsiderCard from "@/components/IndividualInsiderCard";
 export default {
   components: {
-    InsiderCard,
+    IndividualInsiderCard,
   },
   props: ["insider"],
 };

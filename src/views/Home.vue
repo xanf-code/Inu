@@ -10,30 +10,36 @@
 
 <script>
 import Result from "@/components/Result";
+import { ref } from "vue";
+
 export default {
+  setup() {
+    const result = ref([]);
+    const loading = ref(true);
+
+    const InsiderAPI = () => {
+      fetch(
+        "https://insidershibu.herokuapp.com/scrapedata/getInsiderData?limit=30"
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          result.value = data.result;
+          loading.value = false;
+        });
+    };
+    return {
+      result,
+      loading,
+      InsiderAPI,
+    };
+  },
+  created() {
+    this.InsiderAPI();
+  },
   name: "Home",
   components: {
     Result,
-  },
-  data() {
-    return {
-      loading: true,
-      result: [],
-    };
-  },
-  methods: {
-    async fetchInsiderData() {
-      const res = await fetch(
-        "https://insidershibu.herokuapp.com/scrapedata/getInsiderData?limit=30"
-      );
-      const data = await res.json();
-      return data;
-    },
-  },
-  async created() {
-    const data = await this.fetchInsiderData();
-    this.result = data.result;
-    this.loading = false;
   },
 };
 </script>

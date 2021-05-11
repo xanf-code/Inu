@@ -4,19 +4,17 @@
       <Header />
     </header>
     <main class="overflow-y-auto">
-      <Home />
+      <router-view />
     </main>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header.vue";
-import Home from "@/views/Home";
+import Header from "@/components/Header.vue";
 
 export default {
   components: {
     Header,
-    Home,
   },
   watch: {
     $route(to) {

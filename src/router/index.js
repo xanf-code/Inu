@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '@/views/Home.vue'
+import InsiderPage from '@/views/InsiderPage.vue'
 
 const routes = [
   {
@@ -8,7 +9,12 @@ const routes = [
     component: Home,
     meta: {
       title: "InsiderShibu | Beta"
-    }
+    },
+  },
+  {
+    path: '/info/:id',
+    name: 'InsiderPage',
+    component: InsiderPage,
   }
 ]
 

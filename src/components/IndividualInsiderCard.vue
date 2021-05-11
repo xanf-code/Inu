@@ -51,7 +51,7 @@
 import TickerBox from "@/components/TickerBox";
 import Trade from "@/components/Trade";
 export default {
-  name: "InsiderCard",
+  name: "IndividualInsiderCard",
   props: ["result"],
   components: {
     TickerBox,
