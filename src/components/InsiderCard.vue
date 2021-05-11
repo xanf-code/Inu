@@ -11,9 +11,9 @@
           {{ result.companyName }}
         </h1>
       </div>
-      <!-- <h1 class="text-gray-600 font-semibold font-sans truncate text-sm">
-        {moment.utc(result.date).local().startOf('seconds').fromNow()}
-      </h1> -->
+      <h1 class="text-gray-600 font-semibold font-sans truncate text-sm pt-0.5">
+        {{ getHumanDate(result.date) }}
+      </h1>
     </div>
     <div class="flex justify-between">
       <div>
@@ -50,12 +50,18 @@
 <script>
 import TickerBox from "@/components/TickerBox";
 import Trade from "@/components/Trade";
+import moment from "moment";
 export default {
   name: "InsiderCard",
   props: ["result"],
   components: {
     TickerBox,
     Trade,
+  },
+  methods: {
+    getHumanDate: function (date) {
+      return moment.utc(date).local().startOf("seconds").fromNow();
+    },
   },
 };
 </script>
