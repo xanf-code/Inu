@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { ref, onBeforeMount } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 import IndividualResult from "@/components/IndividualResult";
 
@@ -22,21 +22,24 @@ export default {
     const results = ref({});
     const loading = ref(true);
     const route = useRoute();
-    onBeforeMount(() => {
+    const InsiderIndividualAPI = () => {
       fetch(
         `https://insidershibu.herokuapp.com/scrapedata/getInsiderData/${route.params.id}`
       )
-        .then((response) => response.json())
+        .then((res) => res.json())
         .then((data) => {
           results.value = data.result;
           loading.value = false;
         });
-    });
+    };
     return {
       results,
+      loading,
+      InsiderIndividualAPI,
     };
   },
   created() {
+    this.InsiderIndividualAPI();
     document.title = this.$route.params.id;
   },
 };
