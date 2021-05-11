@@ -25,11 +25,24 @@
         </p>
       </div>
       <div class="pt-1">
-        <div class="flex">
+        <div
+          :class="`flex ${
+            result.tradeQuantity.includes('+')
+              ? 'text-yellow-500'
+              : 'text-red-600'
+          }`"
+        >
           <Trade :text="result.tradeQuantity" />
         </div>
-        <div class="flex justify-end">
-          <Trade :text="result.stockPercent" colour="red" />
+        <div
+          :class="`flex justify-end ${
+            result.stockPercent.includes('+') ||
+            result.stockPercent.includes('New')
+              ? 'text-yellow-500'
+              : 'text-red-600'
+          }`"
+        >
+          <Trade :text="result.stockPercent" />
         </div>
       </div>
     </div>
