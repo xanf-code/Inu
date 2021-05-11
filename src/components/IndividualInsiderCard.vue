@@ -63,7 +63,9 @@
 <script>
 import TickerBox from "@/components/TickerBox";
 import Trade from "@/components/Trade";
-import moment from "moment";
+import dayjs from "dayjs";
+var relativeTime = require("dayjs/plugin/relativeTime");
+dayjs.extend(relativeTime);
 
 export default {
   name: "IndividualInsiderCard",
@@ -74,7 +76,7 @@ export default {
   },
   methods: {
     getHumanDate: function (date) {
-      return moment.utc(date).local().startOf("seconds").fromNow();
+      return dayjs().to(dayjs(date));
     },
   },
 };
