@@ -73,7 +73,7 @@
         <TickerBox
           :text="result.value"
           :color="`${
-            result.value.includes('+') ? 'text-yellow-500' : 'text-red-600'
+            result.value.includes('+') ? 'text-white' : 'text-red-600'
           }`"
         />
       </div>
