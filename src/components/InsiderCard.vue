@@ -4,7 +4,7 @@
   >
     <div class="flex justify-between">
       <div class="flex justify-start">
-        <TickerBox :text="result.ticker" />
+        <TickerBox :text="result.ticker" color="text-purple-800" />
         <h1
           class="truncate text-purple-800 max-w-md font-medium font-sans pl-1"
         >
@@ -59,7 +59,7 @@
     </div>
     <div class="flex justify-between">
       <div class="flex">
-        <TickerBox :text="result.tradeType" />
+        <TickerBox :text="result.tradeType" color="text-purple-800" />
         <h1 class="truncate text-white max-w-md font-medium font-sans pl-1.5">
           {{ result.tradePrice }}
         </h1>
@@ -70,7 +70,12 @@
             result.value.includes('+') ? 'text-yellow-500' : 'text-red-600'
           }`"
         />
-        <TickerBox :text="result.value" />
+        <TickerBox
+          :text="result.value"
+          :color="`${
+            result.value.includes('+') ? 'text-yellow-500' : 'text-red-600'
+          }`"
+        />
       </div>
     </div>
   </div>
