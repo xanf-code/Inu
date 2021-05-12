@@ -26,12 +26,17 @@
       </div>
       <div class="pt-1">
         <div
-          :class="`flex ${
+          :class="`flex justify-end ${
             result.tradeQuantity.includes('+')
               ? 'text-yellow-500'
               : 'text-red-600'
           }`"
         >
+          <BriefcaseIcon
+            :class="`h-4 self-center pr-1 pt-0.5 ${
+              result.value.includes('+') ? 'text-yellow-500' : 'text-red-600'
+            }`"
+          />
           <Trade :text="result.tradeQuantity" />
         </div>
         <div
@@ -42,6 +47,12 @@
               : 'text-red-600'
           }`"
         >
+          <TrendingUpIcon
+            v-if="result.stockPercent.includes('+')"
+            class="h-4 self-center pr-1 text-yellow-500"
+          />
+
+          <TrendingDownIcon v-else class="h-4 self-center pr-1 text-red-600" />
           <Trade :text="result.stockPercent" />
         </div>
       </div>
@@ -54,6 +65,11 @@
         </h1>
       </div>
       <div class="flex">
+        <CurrencyDollarIcon
+          :class="`h-6 pr-0.5 pt-0.5 hover:animate-spin ${
+            result.value.includes('+') ? 'text-yellow-500' : 'text-red-600'
+          }`"
+        />
         <TickerBox :text="result.value" />
       </div>
     </div>
@@ -66,6 +82,12 @@ import Trade from "@/components/Trade";
 import dayjs from "dayjs";
 var relativeTime = require("dayjs/plugin/relativeTime");
 dayjs.extend(relativeTime);
+import {
+  CurrencyDollarIcon,
+  BriefcaseIcon,
+  TrendingUpIcon,
+  TrendingDownIcon,
+} from "@heroicons/vue/outline";
 
 export default {
   name: "IndividualInsiderCard",
@@ -73,6 +95,10 @@ export default {
   components: {
     TickerBox,
     Trade,
+    CurrencyDollarIcon,
+    BriefcaseIcon,
+    TrendingUpIcon,
+    TrendingDownIcon,
   },
   methods: {
     getHumanDate: function (date) {

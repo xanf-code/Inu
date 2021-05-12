@@ -18,5 +18,6 @@ export default function individualAPI() {
         results,
         loading,
         individualAPILoad,
+        route,
     };
 }

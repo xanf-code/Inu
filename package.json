@@ -9,6 +9,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "@heroicons/vue": "^1.0.1",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@vue-hero-icons/outline": "^1.7.2",
     "autoprefixer": "^9",
