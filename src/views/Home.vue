@@ -3,42 +3,29 @@
     v-if="!loading"
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols- pt-2"
   >
-    <Result :insider="result" />
+    <Result :insider="results" />
   </main>
   <main v-else class="flex h-screen"><h1 class="m-auto">Loading...</h1></main>
 </template>
 
 <script>
 import Result from "@/components/Result";
-import { ref } from "vue";
+import topLevelAPI from "../store/toplevelAPI";
 
 export default {
-  setup() {
-    const result = ref([]);
-    const loading = ref(true);
-
-    const InsiderAPI = () => {
-      fetch(
-        "https://insidershibu.herokuapp.com/scrapedata/getInsiderData?limit=30"
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          result.value = data.result;
-          loading.value = false;
-        });
-    };
-    return {
-      result,
-      loading,
-      InsiderAPI,
-    };
-  },
-  created() {
-    this.InsiderAPI();
-  },
   name: "Home",
+
   components: {
     Result,
+  },
+
+  setup() {
+    const { results, loading, loadAllAPI } = topLevelAPI();
+    loadAllAPI();
+    return {
+      results,
+      loading,
+    };
   },
 };
 </script>

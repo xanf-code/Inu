@@ -9,38 +9,23 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { useRoute } from "vue-router";
 import IndividualResult from "@/components/IndividualResult";
+import individualAPI from "../store/individualAPI";
 
 export default {
   name: "InsiderPage",
+
   components: {
     IndividualResult,
   },
+
   setup() {
-    const results = ref({});
-    const loading = ref(true);
-    const route = useRoute();
-    const InsiderIndividualAPI = () => {
-      fetch(
-        `https://insidershibu.herokuapp.com/scrapedata/getInsiderData/${route.params.id}`
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          results.value = data.result;
-          loading.value = false;
-        });
-    };
+    const { results, loading, individualAPILoad } = individualAPI();
+    individualAPILoad();
     return {
       results,
       loading,
-      InsiderIndividualAPI,
     };
-  },
-  created() {
-    this.InsiderIndividualAPI();
-    document.title = this.$route.params.id;
   },
 };
 </script>
