@@ -4,14 +4,16 @@
   >
     <div class="flex justify-between">
       <div class="flex justify-start">
-        <TickerBox :text="result.ticker" />
+        <TickerBox :text="result.ticker" color="text-purple-800" />
         <h1
-          class="truncate text-purple-800 max-w-md font-medium font-sans pl-1"
+          class="truncate text-purple-800 max-w-md font-medium font-sans pl-1 pr-1"
         >
           {{ result.companyName }}
         </h1>
       </div>
-      <h1 class="text-gray-600 font-semibold font-sans truncate text-sm pt-0.5">
+      <h1
+        class="text-gray-600 font-semibold font-sans truncate text-sm pt-0.5 pr-2"
+      >
         {{ getHumanDate(result.date) }}
       </h1>
     </div>
@@ -59,7 +61,7 @@
     </div>
     <div class="flex justify-between">
       <div class="flex">
-        <TickerBox :text="result.tradeType" />
+        <TickerBox :text="result.tradeType" color="text-purple-800" />
         <h1 class="truncate text-white max-w-md font-medium font-sans pl-1.5">
           {{ result.tradePrice }}
         </h1>
@@ -70,7 +72,12 @@
             result.value.includes('+') ? 'text-yellow-500' : 'text-red-600'
           }`"
         />
-        <TickerBox :text="result.value" />
+        <TickerBox
+          :text="result.value"
+          :color="`${
+            result.value.includes('+') ? 'text-white' : 'text-red-600'
+          }`"
+        />
       </div>
     </div>
   </div>

@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col h-screen">
     <header class="bg-black">
-      <Header v-if="!mobileView" />
-      <MobileHeader v-if="mobileView" />
+      <Header v-if="!state.mobileView" />
+      <MobileHeader v-if="state.mobileView" />
     </header>
     <main class="overflow-y-auto">
       <router-view />
@@ -16,17 +16,16 @@ import MobileHeader from "@/components/MobileHeader.vue";
 import toggleNavBar from "./store/NavBarToggle";
 export default {
   setup() {
-    const { mobileView, handleView } = toggleNavBar();
+    const { state, methods } = toggleNavBar();
 
     return {
-      mobileView,
-
-      handleView,
+      state,
+      methods,
     };
   },
   created() {
-    this.handleView();
-    window.addEventListener("resize", this.handleView);
+    this.methods.handleView();
+    window.addEventListener("resize", this.methods.handleView);
   },
   components: {
     Header,

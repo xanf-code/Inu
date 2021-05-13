@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-row sm:flex-row m-5 items-center">
     <MenuAlt1Icon
-      @click="onMenuClick()"
-      class="cursor-pointer h-6 pt-0.5 self-center pr-2 text-white"
+      @click="methods.onMenuClick"
+      class="cursor-pointer h-6 pt-0.5 self-center pr-4 text-white"
     />
     <div>
       <router-link to="/">
@@ -21,13 +21,15 @@ import toggleNavBar from "../store/NavBarToggle";
 
 export default {
   name: "MobileHeader",
+
   setup() {
-    const { showNavBar, onMenuClick } = toggleNavBar();
+    const { showNavBar, methods } = toggleNavBar();
     return {
       showNavBar,
-      onMenuClick,
+      methods,
     };
   },
+
   components: {
     MenuAlt1Icon,
   },

@@ -1,21 +1,26 @@
-import { ref } from "vue";
+import { reactive } from "vue";
 
 export default function toggleNavBar() {
-    const mobileView = ref(false);
-    const showNavBar = ref(false);
 
-    function handleView() {
-        mobileView.value = window.innerWidth <= 990;
-    }
 
-    function onMenuClick() {
-        showNavBar.value = !showNavBar.value
+    const state = reactive({
+        showNavBar: false,
+        mobileView: false,
+    })
+
+    const methods = {
+        handleView() {
+            state.mobileView = window.innerWidth <= 990;
+        },
+
+        onMenuClick() {
+            state.showNavBar = !state.showNavBar
+            console.log(state.showNavBar)
+        }
     }
 
     return {
-        mobileView,
-        showNavBar,
-        handleView,
-        onMenuClick,
+        state,
+        methods,
     };
 }
