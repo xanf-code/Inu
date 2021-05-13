@@ -6,12 +6,14 @@
       <div class="flex justify-start">
         <TickerBox :text="result.ticker" color="text-purple-800" />
         <h1
-          class="truncate text-purple-800 max-w-md font-medium font-sans pl-1"
+          class="truncate text-purple-800 max-w-md font-medium font-sans pl-1 pr-1"
         >
           {{ result.companyName }}
         </h1>
       </div>
-      <h1 class="text-gray-600 font-semibold font-sans truncate text-sm pt-0.5">
+      <h1
+        class="text-gray-600 font-semibold font-sans truncate text-sm pt-0.5 pr-2"
+      >
         {{ getHumanDate(result.date) }}
       </h1>
     </div>

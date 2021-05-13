@@ -3,6 +3,9 @@
     v-if="!loading"
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-2"
   >
+    <div v-if="showNavBar">
+      <h1>This is responsive nav</h1>
+    </div>
     <Result :insider="results" />
   </main>
   <main v-else class="flex h-screen"><h1 class="m-auto">Loading...</h1></main>
@@ -11,6 +14,7 @@
 <script>
 import Result from "@/components/Result";
 import topLevelAPI from "../store/toplevelAPI";
+import toggleNavBar from "../store/NavBarToggle";
 
 export default {
   name: "Home",
@@ -21,11 +25,9 @@ export default {
 
   setup() {
     const { results, loading, loadAllAPI } = topLevelAPI();
+    const { showNavBar } = toggleNavBar();
     loadAllAPI();
-    return {
-      results,
-      loading,
-    };
+    return { showNavBar, results, loading };
   },
 };
 </script>
