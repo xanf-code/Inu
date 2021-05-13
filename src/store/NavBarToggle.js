@@ -15,7 +15,6 @@ export default function toggleNavBar() {
 
         onMenuClick() {
             state.showNavBar = !state.showNavBar
-            console.log(state.showNavBar)
         }
     }
 

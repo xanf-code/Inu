@@ -6,7 +6,7 @@
     />
     <div>
       <router-link to="/">
-        <h1 class="self-center text-xl font-bold cursor-pointer">
+        <h1 class="self-center text-xl font-bold cursor-pointer pt-0.5">
           Insider
           <span class="text-purple-600"> Shibu🐕🚀🚀 </span>
         </h1>
