@@ -13,7 +13,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import MobileHeader from "@/components/MobileHeader.vue";
-import toggleNavBar from "./store/NavBarToggle";
+import toggleNavBar from "./store/NavStore";
 export default {
   setup() {
     const { state, methods } = toggleNavBar();

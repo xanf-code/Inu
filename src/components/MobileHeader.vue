@@ -17,18 +17,16 @@
 
 <script>
 import { MenuAlt1Icon } from "@heroicons/vue/solid";
-import toggleNavBar from "../store/NavBarToggle";
+import toggleNavBar from "../store/NavStore";
 export default {
   name: "MobileHeader",
   setup() {
     const { state, methods } = toggleNavBar();
-
     return {
       state,
       methods,
     };
   },
-
   components: {
     MenuAlt1Icon,
   },
