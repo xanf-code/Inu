@@ -6,23 +6,25 @@
       <div class="flex justify-start">
         <TickerBox :text="result.ticker" color="text-purple-800" />
         <h1
-          class="truncate text-purple-800 max-w-md font-medium font-sans pl-1 pr-1"
+          class="truncate text-purple-800 max-w-md font-medium text-sm self-center font-poppins pl-1 pr-1"
         >
           {{ result.companyName }}
         </h1>
       </div>
       <h1
-        class="text-gray-600 font-semibold font-sans truncate text-sm pt-0.5 pr-2"
+        class="text-gray-600 font-medium font-poppins truncate text-sm pt-0.5 pr-2"
       >
         {{ getHumanDate(result.date) }}
       </h1>
     </div>
     <div class="flex justify-between">
       <div>
-        <h1 class="truncate max-w-md font-bold font-sans pt-1 pl-1">
+        <h1 class="truncate max-w-md font-bold font-poppins pt-1 pl-1">
           {{ result.insiderName }}
         </h1>
-        <p class="truncate font-sans text-purple-600 font-semibold pl-1 pb-1.5">
+        <p
+          class="truncate text-purple-600 font-semibold font-poppins pl-1 pb-1.5"
+        >
           {{ result.insiderTitle }}
         </p>
       </div>

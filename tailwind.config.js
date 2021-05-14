@@ -4,7 +4,13 @@ module.exports = {
   },
   purge: { content: ['./public/**/*.html', './src/**/*.vue'] },
   darkMode: false, // or 'media' or 'class'
-  theme: {},
+  theme: {
+    extend: {
+      fontFamily: {
+        poppins: ["Poppins"]
+      }
+    }
+  },
   variants: {
     extend: {
       animation: ['hover', 'focus'],

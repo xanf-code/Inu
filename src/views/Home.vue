@@ -5,17 +5,13 @@
   >
     <div v-if="state.showNavBar">
       <div
-        class="relative flex flex-row overflow-x-scroll whitespace-nowrap scrollbar-hide mx-2 my-4"
+        class="flex flex-row overflow-x-scroll whitespace-nowrap scrollbar-hide mx-2 my-4 last:pr-6"
       >
         <MenuItems text="🏠 Home" />
         <MenuItems text="🐋 Watch" />
         <MenuItems text="📲 Download" />
         <MenuItems text="🔧 About" />
-        <MenuItems text="🔧 demo" />
       </div>
-      <div
-        class="absolute top-0 right-0 bg-gradient-to-l from-gray-900 h-full w-1/2"
-      />
     </div>
     <Result :insider="results" />
   </main>
