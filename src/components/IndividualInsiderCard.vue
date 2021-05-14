@@ -6,7 +6,7 @@
       <div class="flex justify-start">
         <TickerBox :text="result.ticker" color="text-purple-800" />
         <h1
-          class="truncate text-purple-800 max-w-md font-medium text-sm self-center font-poppins pl-1 pr-1"
+          class="truncate text-purple-800 max-w-md font-semibold text-sm self-center font-poppins pl-1 pr-1"
         >
           {{ result.companyName }}
         </h1>
@@ -74,7 +74,7 @@
             result.value.includes('+') ? 'text-yellow-500' : 'text-red-600'
           }`"
         />
-        <TickerBox
+        <AmountTickerBox
           :text="result.value"
           :color="`${
             result.value.includes('+') ? 'text-white' : 'text-red-600'
@@ -87,6 +87,7 @@
 
 <script>
 import TickerBox from "@/components/TickerBox";
+import AmountTickerBox from "../components/AmountTickerBox";
 import Trade from "@/components/Trade";
 import dayjs from "dayjs";
 var relativeTime = require("dayjs/plugin/relativeTime");
@@ -108,6 +109,7 @@ export default {
     BriefcaseIcon,
     TrendingUpIcon,
     TrendingDownIcon,
+    AmountTickerBox,
   },
   methods: {
     getHumanDate: function (date) {
