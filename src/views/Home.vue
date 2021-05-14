@@ -7,10 +7,11 @@
       <div
         class="flex flex-row overflow-x-scroll whitespace-nowrap scrollbar-hide mx-2 my-4 last:pr-6"
       >
-        <MenuItems text="🏠 Home" />
+        MENU ITEMS HERE
+        <!-- <MenuItems text="🏠 Home" />
         <MenuItems text="🐋 Watch" />
         <MenuItems text="📲 Download" />
-        <MenuItems text="🔧 About" />
+        <MenuItems text="🔧 About" /> -->
       </div>
     </div>
     <Result :insider="results" />
@@ -24,14 +25,14 @@
 import Result from "@/components/Result";
 import topLevelAPI from "../store/toplevelAPI";
 import toggleNavBar from "../store/NavStore";
-import MenuItems from "../components/MenuItems";
+//import MenuItems from "../components/MenuItems";
 
 export default {
   name: "Home",
 
   components: {
     Result,
-    MenuItems,
+    //MenuItems,
   },
 
   setup() {

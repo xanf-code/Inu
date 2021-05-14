@@ -64,7 +64,9 @@
     <div class="flex justify-between">
       <div class="flex">
         <TickerBox :text="result.tradeType" color="text-purple-800" />
-        <h1 class="truncate text-white max-w-md font-medium font-sans pl-1.5">
+        <h1
+          class="truncate text-white max-w-md font-medium font-poppins pl-1.5"
+        >
           {{ result.tradePrice }}
         </h1>
       </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-end">
-    <p class="font-semibold pl-1 pr-1">{{ text }}</p>
+    <p class="font-normal font-poppins pl-1 pr-1">{{ text }}</p>
 
     <ChevronUpIcon
       v-if="text.includes('+')"
