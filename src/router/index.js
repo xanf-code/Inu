@@ -26,7 +26,7 @@ const routes = [
     component: DownloadPage,
   },
   {
-    path: '/whaleWatch',
+    path: '/whalewatch',
     name: 'Whales',
     component: Whales,
   },

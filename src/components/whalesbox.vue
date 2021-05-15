@@ -3,9 +3,8 @@
   <h1>{{ value.value }}</h1>
 </template>
 
-<script>
-import "vue-good-table/dist/vue-good-table.css";
 
+<script>
 export default {
   name: "WhalesBox",
   props: ["keyValue", "value"],
