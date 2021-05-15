@@ -4,6 +4,7 @@ import InsiderPage from '@/views/InsiderPage.vue'
 import DownloadPage from '@/views/Download.vue'
 import '../../node_modules/nprogress/nprogress.css';
 import NProgress from 'nprogress';
+import Whales from '../views/Whales.vue'
 
 const routes = [
   {
@@ -23,6 +24,11 @@ const routes = [
     path: '/download',
     name: 'DownloadPage',
     component: DownloadPage,
+  },
+  {
+    path: '/whaleWatch',
+    name: 'Whales',
+    component: Whales,
   },
 ]
 

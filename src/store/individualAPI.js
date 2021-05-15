@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import { useRoute } from "vue-router";
+import axios from 'axios';
 
 export default function individualAPI() {
     const results = ref([]);
@@ -7,11 +8,10 @@ export default function individualAPI() {
     const route = useRoute();
 
     const individualAPILoad = async () => {
-        const individualResponse = await fetch(
+        const individualResponse = await axios.get(
             `https://insidershibu.herokuapp.com/scrapedata/getInsiderData/${route.params.id}`
         );
-        const response = await individualResponse.json();
-        results.value = response.result;
+        results.value = individualResponse.data.result;
         loading.value = false;
     };
     return {

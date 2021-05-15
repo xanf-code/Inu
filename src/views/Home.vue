@@ -7,7 +7,9 @@
       <div
         class="flex flex-row overflow-x-scroll whitespace-nowrap scrollbar-hide mx-2 my-4 last:pr-6"
       >
-        MENU ITEMS HERE
+        <router-link to="/whaleWatch">
+          <span>MENU ITEMS HERE</span>
+        </router-link>
         <!-- <MenuItems text="🏠 Home" />
         <MenuItems text="🐋 Watch" />
         <MenuItems text="📲 Download" />
@@ -38,7 +40,6 @@ export default {
   setup() {
     const { state } = toggleNavBar();
     const { results, loading, loadAllAPI } = topLevelAPI();
-
     loadAllAPI();
     return { results, loading, state };
   },
