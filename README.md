@@ -1,4 +1,4 @@
-# shibu
+# shibu 🐕🐶
 
 ## Project setup
 ```
