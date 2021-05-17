@@ -6,12 +6,9 @@
     />
     <div>
       <router-link to="/">
-        <h1
-          class="tw-self-center tw-text-xl tw-font-bold tw-cursor-pointer tw-pt-0.5 tw-text-white"
-        >
-          Insider
-          <h1 class="tw-text-purple-600">Shibu🐕🚀🚀</h1>
-        </h1>
+        <span class="tw-text-xl tw-font-bold tw-cursor-pointer tw-pt-0.5">
+          Insider Shibu🐕🚀🚀
+        </span>
       </router-link>
     </div>
   </div>
