@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col"
+    class="tw-flex tw-flex-col"
     v-for="individual in insider"
     :key="individual._id"
   >

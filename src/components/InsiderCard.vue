@@ -1,85 +1,94 @@
 <template>
   <div
-    class="box-border h-32 px-2 py-2 bg-black rounded-md cursor-pointer mr-1.5 ml-1.5 mb-1.5 hover:animate-pulse"
+    class="tw-box-border tw-h-32 tw-px-2 tw-py-2 tw-bg-black tw-rounded-md tw-cursor-pointer tw-mr-1.5 tw-ml-1.5 tw-mb-1.5 hover:tw-animate-pulse"
   >
-    <div class="flex justify-between">
-      <div class="flex justify-start">
-        <TickerBox :text="result.ticker" color="text-purple-800" />
+    <div class="tw-flex tw-justify-between">
+      <div class="tw-flex tw-justify-start">
+        <TickerBox :text="result.ticker" color="tw-text-purple-800" />
         <h1
-          class="truncate text-purple-800 max-w-md font-semibold text-sm self-center font-poppins pl-1 pr-1"
+          class="tw-truncate tw-text-purple-800 tw-max-w-md tw-font-semibold tw-text-sm tw-self-center tw-font-poppins tw-pl-1 tw-pr-1"
         >
           {{ result.companyName }}
         </h1>
       </div>
       <h1
-        class="text-gray-600 font-medium font-poppins truncate text-sm pt-0.5 pr-2"
+        class="tw-text-gray-600 tw-font-medium tw-font-poppins tw-truncate tw-text-sm tw-pt-0.5 tw-pr-2"
       >
         {{ getHumanDate(result.date) }}
       </h1>
     </div>
-    <div class="flex justify-between">
+    <div class="tw-flex tw-justify-between">
       <div>
-        <h1 class="truncate max-w-md font-bold font-poppins pt-1 pl-1">
+        <h1
+          class="tw-truncate tw-max-w-md tw-font-bold tw-font-poppins tw-pt-2 tw-pl-1 tw-text-white"
+        >
           {{ result.insiderName }}
         </h1>
         <p
-          class="truncate text-purple-600 font-semibold font-poppins pl-1 pb-1.5"
+          class="tw-truncate tw-text-purple-600 tw-font-semibold tw-font-poppins tw-pt-1 tw-pl-1 tw-pb-1.5"
         >
           {{ result.insiderTitle }}
         </p>
       </div>
-      <div class="pt-1">
+      <div class="tw-pt-1">
         <div
-          :class="`flex justify-end ${
+          :class="`tw-flex tw-justify-end ${
             result.tradeQuantity.includes('+')
-              ? 'text-yellow-500'
-              : 'text-red-600'
+              ? 'tw-text-yellow-500'
+              : 'tw-text-red-600'
           }`"
         >
           <BriefcaseIcon
-            :class="`h-4 self-center pr-1 pt-0.5 ${
-              result.value.includes('+') ? 'text-yellow-500' : 'text-red-600'
+            :class="`tw-h-4 tw-self-center tw-pr-1 tw-pt-0.5 ${
+              result.value.includes('+')
+                ? 'tw-text-yellow-500'
+                : 'tw-text-red-600'
             }`"
           />
           <Trade :text="result.tradeQuantity" />
         </div>
         <div
-          :class="`flex justify-end ${
+          :class="`tw-flex tw-justify-end ${
             result.stockPercent.includes('+') ||
             result.stockPercent.includes('New')
-              ? 'text-yellow-500'
-              : 'text-red-600'
+              ? 'tw-text-yellow-500'
+              : 'tw-text-red-600'
           }`"
         >
           <TrendingUpIcon
             v-if="result.stockPercent.includes('+')"
-            class="h-4 self-center pr-1 text-yellow-500"
+            class="tw-h-4 tw-self-center tw-pr-1 tw-text-yellow-500"
           />
 
-          <TrendingDownIcon v-else class="h-4 self-center pr-1 text-red-600" />
+          <TrendingDownIcon
+            v-else
+            class="tw-h-4 tw-self-center tw-pr-1 tw-text-red-600"
+          />
           <Trade :text="result.stockPercent" />
         </div>
       </div>
     </div>
-    <div class="flex justify-between">
-      <div class="flex">
-        <TickerBox :text="result.tradeType" color="text-purple-800" />
+    <div class="tw-flex tw-justify-between">
+      <div class="tw-flex">
+        <TickerBox :text="result.tradeType" color="tw-text-purple-800" />
         <h1
-          class="truncate text-white max-w-md font-medium font-poppins pl-1.5"
+          class="tw-truncate tw-text-white tw-max-w-md tw-font-medium tw-font-poppins tw-pl-1.5 tw-self-center"
         >
           {{ result.tradePrice }}
         </h1>
       </div>
-      <div class="flex">
+      <div class="tw-flex">
         <CurrencyDollarIcon
-          :class="`h-6 pr-0.5 pt-0.5 hover:animate-spin ${
-            result.value.includes('+') ? 'text-yellow-500' : 'text-red-600'
+          :class="`tw-h-6 tw-pr-0.5 tw-pt-0.5 hover:tw-animate-spin ${
+            result.value.includes('+')
+              ? 'tw-text-yellow-500'
+              : 'tw-text-red-600'
           }`"
         />
         <AmountTickerBox
           :text="result.value"
           :color="`${
-            result.value.includes('+') ? 'text-white' : 'text-red-600'
+            result.value.includes('+') ? 'tw-text-white' : 'tw-text-red-600'
           }`"
         />
       </div>

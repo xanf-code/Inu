@@ -1,13 +1,16 @@
 <template>
-  <div class="flex justify-end">
-    <p class="font-normal font-poppins pl-1 pr-1">{{ text }}</p>
+  <div class="tw-flex tw-justify-end">
+    <p class="tw-font-normal tw-font-poppins tw-pl-1 tw-pr-1">{{ text }}</p>
 
     <ChevronUpIcon
       v-if="text.includes('+')"
-      class="h-4 self-center pr-1 text-yellow-500"
+      class="tw-h-4 tw-self-center tw-pr-1 tw-text-yellow-500"
     />
 
-    <ChevronDownIcon v-else class="h-4 self-center pr-1 text-red-600" />
+    <ChevronDownIcon
+      v-else
+      class="tw-h-4 tw-self-center tw-pr-1 tw-text-red-600"
+    />
   </div>
 </template>
 

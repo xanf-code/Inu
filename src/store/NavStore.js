@@ -8,7 +8,7 @@ const state = reactive({
 export default function toggleNavBar() {
     const methods = {
         handleView() {
-            state.mobileView = window.innerWidth <= 990;
+            state.mobileView = window.innerWidth <= 767;
         },
         onMenuClick() {
             state.showNavBar = !state.showNavBar

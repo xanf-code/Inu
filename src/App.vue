@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col h-screen">
-    <header class="bg-black">
+  <div class="tw-flex tw-flex-col tw-h-screen">
+    <header class="tw-bg-black">
       <Header v-if="!state.mobileView" />
       <MobileHeader v-if="state.mobileView" />
     </header>
-    <main class="overflow-y-auto">
+    <main class="tw-overflow-y-auto">
       <router-view />
     </main>
   </div>

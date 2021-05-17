@@ -4,8 +4,8 @@
       <whalesBox :results="results" />
     </div>
   </main>
-  <main v-else class="flex h-screen">
-    <h1 class="m-auto">Loading...</h1>
+  <main v-else class="tw-flex tw-h-screen">
+    <h1 class="tw-m-auto">Loading...</h1>
   </main>
 </template>
 

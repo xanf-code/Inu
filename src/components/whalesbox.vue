@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-5 my-5">
+  <div class="tw-mx-5 tw-my-5">
     <table class="table table-dark">
       <thead>
         <tr>
@@ -11,10 +11,10 @@
       </thead>
       <tbody>
         <tr v-for="d in results.result" :key="d._id">
-          <td class="text-white">{{ d.rank }}</td>
-          <td class="text-white">{{ d.quantityInitial }}</td>
-          <td class="text-white">{{ d.quantityCurrent }}</td>
-          <td class="text-white">{{ d.quantityChanges }}</td>
+          <td class="tw-text-white">{{ d.rank }}</td>
+          <td class="tw-text-white">{{ d.quantityInitial }}</td>
+          <td class="tw-text-white">{{ d.quantityCurrent }}</td>
+          <td class="tw-text-white">{{ d.quantityChanges }}</td>
         </tr>
       </tbody>
     </table>

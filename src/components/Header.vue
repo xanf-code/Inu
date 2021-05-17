@@ -1,21 +1,25 @@
 <template>
-  <div class="flex flex-row sm:flex-row m-5 justify-between items-center">
+  <div
+    class="tw-flex tw-flex-row sm:tw-flex-row tw-m-5 tw-justify-between tw-items-center"
+  >
     <div>
       <router-link to="/">
-        <h1 class="self-center text-xl font-bold cursor-pointer">
+        <h1
+          class="tw-self-center tw-text-xl tw-font-bold tw-cursor-pointer tw-pt-0.5 tw-text-white"
+        >
           Insider
-          <span class="text-purple-600"> Shibu🐕🚀🚀 </span>
+          <span class="tw-text-purple-600"> Shibu🐕🚀🚀 </span>
         </h1>
       </router-link>
     </div>
     <div
-      className="flex flex-row cursor-pointer w-12 sm:w-20 space-x-6 mr-7 tracking-widest"
+      className="tw-flex tw-flex-row tw-cursor-pointer tw-w-12 sm:tw-w-20 tw-space-x-6 tw-mr-7 tw-tracking-widest"
     >
       <router-link to="/">
-        <HomeIcon class="h-6 hover:animate-bounce" />
+        <HomeIcon class="tw-h-6 hover:tw-animate-bounce" />
       </router-link>
       <router-link :to="{ name: 'DownloadPage' }">
-        <DownloadIcon class="h-6 hover:animate-bounce" />
+        <DownloadIcon class="tw-h-6 hover:tw-animate-bounce" />
       </router-link>
     </div>
   </div>

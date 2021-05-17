@@ -1,14 +1,16 @@
 <template>
-  <div class="flex flex-row sm:flex-row m-5 items-center">
+  <div class="tw-flex tw-flex-row sm:tw-flex-row tw-m-5 tw-items-center">
     <MenuAlt1Icon
       @click="methods.onMenuClick"
-      class="cursor-pointer h-6 pt-0.5 self-center pr-4 text-white"
+      class="tw-cursor-pointer tw-h-6 tw-pt-0.5 tw-self-center tw-pr-4 tw-text-white"
     />
     <div>
       <router-link to="/">
-        <h1 class="self-center text-xl font-bold cursor-pointer pt-0.5">
+        <h1
+          class="tw-self-center tw-text-xl tw-font-bold tw-cursor-pointer tw-pt-0.5 tw-text-white"
+        >
           Insider
-          <span class="text-purple-600"> Shibu🐕🚀🚀 </span>
+          <span class="tw-text-purple-600"> Shibu🐕🚀🚀 </span>
         </h1>
       </router-link>
     </div>

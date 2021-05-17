@@ -1,11 +1,11 @@
 <template>
   <main
     v-if="!loading"
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-2"
+    class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 xl:tw-grid-cols-3 tw-pt-2"
   >
     <div v-if="state.showNavBar">
       <div
-        class="flex flex-row overflow-x-scroll whitespace-nowrap scrollbar-hide mx-2 my-4 last:pr-6"
+        class="tw-flex tw-flex-row tw-overflow-x-scroll tw-whitespace-nowrap tw-scrollbar-hide tw-mx-2 tw-my-4 last:tw-pr-6"
       >
         <router-link to="/whaleWatch">
           <span>MENU ITEMS HERE</span>
@@ -19,8 +19,8 @@
     <Result :insider="results" />
     <div v-observe-visibility="handleScrollToBottom"></div>
   </main>
-  <main v-else class="flex h-screen">
-    <h1 class="m-auto">Loading...</h1>
+  <main v-else class="tw-flex tw-h-screen">
+    <h1 class="tw-m-auto">Loading...</h1>
   </main>
 </template>
 
@@ -33,7 +33,7 @@ const { loadAllAPI } = topLevelAPI();
 
 import { ref } from "vue";
 
-const page = ref(30);
+const page = ref(20);
 export default {
   name: "Home",
 
@@ -48,7 +48,7 @@ export default {
         return;
       }
 
-      page.value += 20;
+      page.value += 10;
       loadAllAPI(page.value);
     },
   },

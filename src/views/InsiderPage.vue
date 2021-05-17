@@ -1,11 +1,13 @@
 <template>
   <main
     v-if="!loading"
-    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-2"
+    class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 xl:tw-grid-cols-3 tw-pt-2"
   >
     <IndividualResult :insider="results" />
   </main>
-  <main v-else class="flex h-screen"><h1 class="m-auto">Loading...</h1></main>
+  <main v-else class="tw-flex tw-h-screen">
+    <h1 class="tw-m-auto">Loading...</h1>
+  </main>
 </template>
 
 <script>

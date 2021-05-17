@@ -1,13 +1,13 @@
 <template>
   <div
-    class="flex bg-gradient-to-r from-gray-700 via-gray-900 to-black py-0.5 px-0.5 rounded-md"
+    class="tw-flex tw-bg-gradient-to-r tw-from-gray-700 tw-via-gray-900 tw-to-black tw-py-0.5 tw-px-0.5 tw-rounded-md"
   >
     <span
-      class="self-center font-poppins font-normal subpixel-antialiased tracking-wide"
+      class="tw-self-center tw-font-poppins tw-font-normal tw-subpixel-antialiased tw-tracking-wide"
       >{{ text }}</span
     >
   </div>
-  <div class="ml-2 mr-2" />
+  <div class="tw-ml-2 tw-mr-2" />
 </template>
 
 <script>

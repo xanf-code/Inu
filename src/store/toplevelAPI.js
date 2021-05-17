@@ -11,7 +11,6 @@ export default function topLevelAPI() {
                 `https://insidershibu.herokuapp.com/scrapedata/getInsiderData?limit=${value}`
             );
             results.value.push(...individualResponse.data.result);
-            console.log(results)
             loading.value = false;
         } catch (e) {
             console.error(e);
