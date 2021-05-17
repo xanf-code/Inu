@@ -5,7 +5,7 @@
   >
     <div v-if="state.showNavBar">
       <div
-        class="tw-flex tw-flex-row tw-overflow-x-scroll tw-whitespace-nowrap tw-scrollbar-hide tw-mx-2 tw-my-4 last:tw-pr-6"
+        class="tw-flex tw-flex-row tw-overflow-x-scroll tw-whitespace-nowrap tw-scrollbar-hide last:tw-pr-6"
       >
         <router-link to="/whaleWatch">
           <span>MENU ITEMS HERE</span>

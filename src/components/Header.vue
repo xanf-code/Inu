@@ -4,9 +4,12 @@
   >
     <div>
       <router-link to="/">
-        <span class="tw-text-xl tw-font-bold tw-cursor-pointer tw-pt-0.5">
-          Insider Shibu🐕🚀🚀
-        </span>
+        <div
+          class="tw-self-center tw-text-xl tw-font-bold tw-cursor-pointer tw-pt-0.5 tw-flex tw-flex-row"
+        >
+          <h1 class="tw-text-white">Insider&nbsp;</h1>
+          <h1 class="tw-text-purple-600">Shibu🐕🚀🚀</h1>
+        </div>
       </router-link>
     </div>
     <div
