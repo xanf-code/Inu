@@ -8,16 +8,15 @@ export default function whaleWatch() {
     const whaleAPILoad = async () => {
         try {
             const whaleResponse = await axios.get(
-                `https://cors-anywhere.herokuapp.com/https://api.watcher.guru/holders/8076c74c5e3f5852037f31ff0093eeb8c8add8d3?includePrev=true`,
+                `https://insiderwhales.herokuapp.com/api/v1/dogecoin/data`,
                 {
                     headers: {
                         'Accept': '*/*',
                         'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
-                        'Access-Control-Allow-Origin': 'https://watcher.guru',
                     }
                 }
             );
-            results.value = whaleResponse.data.data;
+            results.value = whaleResponse.data;
             loading.value = false;
         } catch (error) {
             console.log(error)

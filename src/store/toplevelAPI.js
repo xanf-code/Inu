@@ -1,16 +1,17 @@
 import { ref } from "vue";
 import axios from 'axios';
 
+const results = ref([]);
+const loading = ref(true);
 export default function topLevelAPI() {
-    const results = ref([]);
-    const loading = ref(true);
 
-    const loadAllAPI = async () => {
+    const loadAllAPI = async (value) => {
         try {
             const individualResponse = await axios.get(
-                `https://insidershibu.herokuapp.com/scrapedata/getInsiderData?limit=30`
+                `https://insidershibu.herokuapp.com/scrapedata/getInsiderData?limit=${value}`
             );
-            results.value = individualResponse.data.result;
+            results.value.push(...individualResponse.data.result);
+            console.log(results)
             loading.value = false;
         } catch (e) {
             console.error(e);
@@ -19,6 +20,6 @@ export default function topLevelAPI() {
     return {
         results,
         loading,
-        loadAllAPI,
+        loadAllAPI
     };
 }

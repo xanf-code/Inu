@@ -1,7 +1,7 @@
 <template>
   <main v-if="!loading">
-    <div v-for="(value, key) in results" :key="key">
-      <whalesBox :keyValue="key" :value="value" />
+    <div>
+      <whalesBox :results="results" />
     </div>
   </main>
   <main v-else class="flex h-screen">

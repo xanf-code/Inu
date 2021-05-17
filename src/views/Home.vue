@@ -17,6 +17,7 @@
       </div>
     </div>
     <Result :insider="results" />
+    <div v-observe-visibility="handleScrollToBottom"></div>
   </main>
   <main v-else class="flex h-screen">
     <h1 class="m-auto">Loading...</h1>
@@ -28,7 +29,11 @@ import Result from "@/components/Result";
 import topLevelAPI from "../store/toplevelAPI";
 import toggleNavBar from "../store/NavStore";
 //import MenuItems from "../components/MenuItems";
+const { loadAllAPI } = topLevelAPI();
 
+import { ref } from "vue";
+
+const page = ref(30);
 export default {
   name: "Home",
 
@@ -37,10 +42,21 @@ export default {
     //MenuItems,
   },
 
+  methods: {
+    handleScrollToBottom(isVisible) {
+      if (!isVisible) {
+        return;
+      }
+
+      page.value += 20;
+      loadAllAPI(page.value);
+    },
+  },
+
   setup() {
     const { state } = toggleNavBar();
     const { results, loading, loadAllAPI } = topLevelAPI();
-    loadAllAPI();
+    loadAllAPI(page.value);
     return { results, loading, state };
   },
 };
