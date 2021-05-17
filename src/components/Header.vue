@@ -8,7 +8,7 @@
           class="tw-self-center tw-text-xl tw-font-bold tw-cursor-pointer tw-pt-0.5 tw-text-white"
         >
           Insider
-          <span class="tw-text-purple-600"> Shibu🐕🚀🚀 </span>
+          <h1 class="tw-text-purple-600">Shibu🐕🚀🚀</h1>
         </h1>
       </router-link>
     </div>
