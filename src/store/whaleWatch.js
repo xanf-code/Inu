@@ -1,30 +1,35 @@
-import { ref } from "vue";
-import axios from 'axios';
+import { reactive } from "vue";
+import axios from "axios";
+
+const state = reactive({
+    results: [],
+    loading: true,
+    totalPage: null,
+});
 
 export default function whaleWatch() {
-    const results = ref([]);
-    const loading = ref(true);
-
-    const whaleAPILoad = async () => {
+    const whaleAPILoad = async (coin, page) => {
         try {
             const whaleResponse = await axios.get(
-                `https://insiderwhales.herokuapp.com/api/v1/dogecoin/data`,
+                `https://insiderwhales.herokuapp.com/api/v1/${coin}/data?page=${page}&pagination=10`,
                 {
                     headers: {
-                        'Accept': '*/*',
-                        'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With',
-                    }
+                        Accept: "*/*",
+                        "Access-Control-Allow-Headers":
+                            "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+                    },
                 }
             );
-            results.value = whaleResponse.data;
-            loading.value = false;
+            state.results = whaleResponse.data.result;
+            state.totalPage = whaleResponse.totalPages;
         } catch (error) {
-            console.log(error)
+            console.log(error);
+        } finally {
+            state.loading = false;
         }
     };
     return {
-        results,
-        loading,
+        state,
         whaleAPILoad,
     };
 }

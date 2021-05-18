@@ -7,8 +7,8 @@
       <div
         class="tw-flex tw-flex-row tw-overflow-x-scroll tw-whitespace-nowrap tw-scrollbar-hide last:tw-pr-6"
       >
-        <router-link to="/whaleWatch">
-          <span>MENU ITEMS HERE</span>
+        <router-link to="/whalewatch?crypto=safemoon">
+          <span>safemoon</span>
         </router-link>
         <!-- <MenuItems text="🏠 Home" />
         <MenuItems text="🐋 Watch" />
@@ -29,35 +29,29 @@ import Result from "@/components/Result";
 import topLevelAPI from "../store/toplevelAPI";
 import toggleNavBar from "../store/NavStore";
 //import MenuItems from "../components/MenuItems";
-const { loadAllAPI } = topLevelAPI();
-
 import { ref } from "vue";
 
-const page = ref(20);
 export default {
-  name: "Home",
-
   components: {
     Result,
     //MenuItems,
   },
 
-  methods: {
-    handleScrollToBottom(isVisible) {
+  setup() {
+    const page = ref(20);
+
+    function handleScrollToBottom(isVisible) {
       if (!isVisible) {
         return;
       }
-
       page.value += 10;
       loadAllAPI(page.value);
-    },
-  },
+    }
 
-  setup() {
     const { state } = toggleNavBar();
     const { results, loading, loadAllAPI } = topLevelAPI();
     loadAllAPI(page.value);
-    return { results, loading, state };
+    return { results, loading, state, handleScrollToBottom };
   },
 };
 </script>

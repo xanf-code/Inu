@@ -14,7 +14,7 @@
       <h1
         class="tw-text-gray-600 tw-font-medium tw-font-poppins tw-truncate tw-text-sm tw-pt-0.5 tw-pr-2"
       >
-        {{ getHumanDate(result.date) }}
+        {{ getDate(result.date) }}
       </h1>
     </div>
     <div class="tw-flex tw-justify-between">
@@ -101,8 +101,7 @@ import TickerBox from "@/components/TickerBox";
 import AmountTickerBox from "../components/AmountTickerBox";
 import Trade from "@/components/Trade";
 import dayjs from "dayjs";
-var relativeTime = require("dayjs/plugin/relativeTime");
-dayjs.extend(relativeTime);
+
 import {
   CurrencyDollarIcon,
   BriefcaseIcon,
@@ -122,10 +121,15 @@ export default {
     TrendingDownIcon,
     AmountTickerBox,
   },
-  methods: {
-    getHumanDate: function (date) {
+  setup() {
+    function getDate(date) {
+      var relativeTime = require("dayjs/plugin/relativeTime");
+      dayjs.extend(relativeTime);
       return dayjs().to(dayjs(date));
-    },
+    }
+    return {
+      getDate,
+    };
   },
 };
 </script>

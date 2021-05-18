@@ -1,7 +1,16 @@
 <template>
-  <main v-if="!loading">
+  <main v-if="!state.loading">
+    <div v-for="result in state.results" :key="result._id">
+      <h1>{{ result.walletID }}</h1>
+    </div>
     <div>
-      <whalesBox :results="results" />
+      <VueTailwindPagination
+        :current="currentPage"
+        :total="1000"
+        @page-changed="onPageClick($event)"
+      >
+      </VueTailwindPagination>
+      <!-- <whalesBox :results="state.results" /> -->
     </div>
   </main>
   <main v-else class="tw-flex tw-h-screen">
@@ -11,22 +20,40 @@
 
 <script>
 import whaleWatch from "../store/whaleWatch";
-import whalesBox from "../components/whalesbox";
+import VueTailwindPagination from "@ocrv/vue-tailwind-pagination";
+import "@ocrv/vue-tailwind-pagination/dist/style.css";
+const params = new URLSearchParams(window.location.search);
+import { ref } from "vue";
+const { whaleAPILoad, state } = whaleWatch();
+//import whalesBox from "../components/whalesbox";
 export default {
   name: "Whales",
+  // methods: {
+  //   onPageClick(event) {
+  //     this.currentPage = event;
+  //     whaleAPILoad(params.get("crypto"), this.currentPage);
+  //   },
+  // },
   setup() {
-    const { whaleAPILoad, results, loading } = whaleWatch();
+    const currentPage = ref(1);
+    const onPageClick = (event) => {
+      this.currentPage.value = event;
+      whaleAPILoad(params.get("crypto"), this.currentPage.value);
+    };
 
-    whaleAPILoad();
-
+    whaleAPILoad(params.get("crypto"), 1);
     return {
-      results,
-      loading,
+      state,
+      onPageClick,
+      currentPage,
     };
   },
   created() {
     document.title = "🐳 Watch";
   },
-  components: { whalesBox },
+  components: {
+    //whalesBox
+    VueTailwindPagination,
+  },
 };
 </script>
