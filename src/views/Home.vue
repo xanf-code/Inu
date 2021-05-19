@@ -7,8 +7,8 @@
       <div
         class="tw-flex tw-flex-row tw-overflow-x-scroll tw-whitespace-nowrap tw-scrollbar-hide last:tw-pr-6"
       >
-        <router-link to="/whalewatch?crypto=safemoon">
-          <span>safemoon</span>
+        <router-link to="/whalewatch?type=crypto">
+          <span>Whale Watch</span>
         </router-link>
         <!-- <MenuItems text="🏠 Home" />
         <MenuItems text="🐋 Watch" />

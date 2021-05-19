@@ -1,6 +1,6 @@
 <template>
   <main v-if="!state.loading">
-    <CoinSelect :coins="coinList" />
+    <CoinSelect :coins="coinList" @get-coin="getNewData" />
     <div v-for="result in state.results" :key="result._id">
       <h1>{{ result.walletID }}</h1>
     </div>
@@ -26,20 +26,20 @@ const { whaleAPILoad, state } = whaleWatch();
 import { reactive } from "vue";
 const coinList = [
   {
-    id: 1,
-    name: "DogeCoin",
+    ID: 1,
+    Name: "DogeCoin",
   },
   {
-    id: 2,
-    name: "SafeMoon",
+    ID: 2,
+    Name: "SafeMoon",
   },
   {
-    id: 3,
-    name: "ShibInu",
+    ID: 3,
+    Name: "ShibInu",
   },
   {
-    id: 4,
-    name: "Ethereum",
+    ID: 4,
+    Name: "Ethereum",
   },
 ];
 export default {
@@ -50,13 +50,14 @@ export default {
   setup() {
     const stateStore = reactive({
       nextPage: 1,
+      coinName: "safemoon",
     });
     const onNextPage = () => {
       if (state.isNext == false) {
         return;
       }
       stateStore.nextPage++;
-      whaleAPILoad(params.get("crypto"), stateStore.nextPage);
+      whaleAPILoad(stateStore.coinName, stateStore.nextPage);
     };
 
     const onLastPage = () => {
@@ -64,7 +65,7 @@ export default {
         return;
       }
       stateStore.nextPage--;
-      whaleAPILoad(params.get("crypto"), stateStore.nextPage);
+      whaleAPILoad(stateStore.coinName, stateStore.nextPage);
     };
 
     const goToFirstPage = () => {
@@ -72,7 +73,7 @@ export default {
         return;
       }
       stateStore.nextPage = 1;
-      whaleAPILoad(params.get("crypto"), stateStore.nextPage);
+      whaleAPILoad(stateStore.coinName, stateStore.nextPage);
     };
 
     const goToLastPage = () => {
@@ -80,11 +81,15 @@ export default {
         return;
       }
       stateStore.nextPage = state.totalPages;
-      whaleAPILoad(params.get("crypto"), stateStore.nextPage);
+      whaleAPILoad(stateStore.coinName, stateStore.nextPage);
     };
-    const params = new URLSearchParams(window.location.search);
 
-    whaleAPILoad(params.get("crypto"), 1);
+    whaleAPILoad(stateStore.coinName, 1);
+
+    const getNewData = (coin) => {
+      stateStore.coinName = coin.Name;
+      whaleAPILoad(coin.Name, 1);
+    };
 
     return {
       state,
@@ -94,6 +99,7 @@ export default {
       goToFirstPage,
       goToLastPage,
       coinList,
+      getNewData,
     };
   },
   created() {
