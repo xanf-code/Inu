@@ -3,14 +3,12 @@
     <div v-for="result in state.results" :key="result._id">
       <h1>{{ result.walletID }}</h1>
     </div>
-    <div>
-      <VueTailwindPagination
-        :current="currentPage"
-        :total="1000"
-        @page-changed="onPageClick($event)"
-      >
-      </VueTailwindPagination>
-      <!-- <whalesBox :results="state.results" /> -->
+    <div class="tw-flex tw-felx-row tw-ml-4 tw-mr-4">
+      <button class="tw-pr-1" @click="onLastPage">prev</button>
+      <p>page {{ stateStore.nextPage }} of {{ state.totalPages }}</p>
+      <p>
+        <button class="tw-pl-1" @click="onNextPage">next</button>
+      </p>
     </div>
   </main>
   <main v-else class="tw-flex tw-h-screen">
@@ -20,32 +18,41 @@
 
 <script>
 import whaleWatch from "../store/whaleWatch";
-import VueTailwindPagination from "@ocrv/vue-tailwind-pagination";
-import "@ocrv/vue-tailwind-pagination/dist/style.css";
-const params = new URLSearchParams(window.location.search);
-import { ref } from "vue";
+
 const { whaleAPILoad, state } = whaleWatch();
+import { reactive } from "vue";
 //import whalesBox from "../components/whalesbox";
 export default {
   name: "Whales",
-  // methods: {
-  //   onPageClick(event) {
-  //     this.currentPage = event;
-  //     whaleAPILoad(params.get("crypto"), this.currentPage);
-  //   },
-  // },
   setup() {
-    const currentPage = ref(1);
-    const onPageClick = (event) => {
-      this.currentPage.value = event;
-      whaleAPILoad(params.get("crypto"), this.currentPage.value);
-    };
+    const stateStore = reactive({
+      nextPage: 1,
+    });
+    function onNextPage() {
+      if (state.isNext == false) {
+        return;
+      }
+      stateStore.nextPage++;
+      whaleAPILoad(params.get("crypto"), stateStore.nextPage);
+    }
+
+    function onLastPage() {
+      if (state.isLast == false) {
+        return;
+      }
+      stateStore.nextPage--;
+      whaleAPILoad(params.get("crypto"), stateStore.nextPage);
+    }
+
+    const params = new URLSearchParams(window.location.search);
 
     whaleAPILoad(params.get("crypto"), 1);
+
     return {
       state,
-      onPageClick,
-      currentPage,
+      onNextPage,
+      stateStore,
+      onLastPage,
     };
   },
   created() {
@@ -53,7 +60,6 @@ export default {
   },
   components: {
     //whalesBox
-    VueTailwindPagination,
   },
 };
 </script>

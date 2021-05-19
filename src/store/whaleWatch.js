@@ -4,7 +4,12 @@ import axios from "axios";
 const state = reactive({
     results: [],
     loading: true,
-    totalPage: null,
+    limit: 10,
+    totalPages: 1,
+    currentPage: 1,
+    length: null,
+    isNext: true,
+    isLast: false,
 });
 
 export default function whaleWatch() {
@@ -21,7 +26,12 @@ export default function whaleWatch() {
                 }
             );
             state.results = whaleResponse.data.result;
-            state.totalPage = whaleResponse.totalPages;
+            state.totalPages = whaleResponse.data.totalPages;
+            state.currentPage = whaleResponse.data.currentPage;
+            state.length = whaleResponse.data.length;
+            state.isLast = whaleResponse.data.isLastPageExist;
+            state.isNext = whaleResponse.data.isNextPageExist;
+            state.limit = 10;
         } catch (error) {
             console.log(error);
         } finally {
