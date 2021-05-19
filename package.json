@@ -15,6 +15,7 @@
     "@vue-hero-icons/outline": "^1.7.2",
     "autoprefixer": "^9",
     "axios": "^0.21.1",
+    "core-js": "^3.12.1",
     "dayjs": "^1.10.4",
     "express": "^4.17.1",
     "nprogress": "^0.2.0",
