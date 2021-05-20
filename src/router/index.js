@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
 import '../../node_modules/nprogress/nprogress.css';
 import NProgress from 'nprogress';
+import NotFoundPage from '@/views/404Page.vue'
 
 const routes = [
   {
@@ -27,6 +28,10 @@ const routes = [
     name: 'Whales',
     component: () => import('@/views/Whales.vue'),
   },
+  {
+    path: '/:NotFound(.*)*',
+    component: NotFoundPage,
+  }
 ]
 
 const router = createRouter({
