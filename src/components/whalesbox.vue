@@ -6,7 +6,7 @@
     <div class="tw-flex tw-flex-row tw-justify-between">
       <div class="tw-flex tw-flex-row">
         <div class="tw-pt-1">
-          <TickerBox :text="`# ${results.rank}`" color="tw-text-purple-800" />
+          <TickerBox :text="`# ${results.rank}`" color="tw-text-white" />
         </div>
         <div class="tw-self-center">
           <h1 class="tw-font-poppins tw-ml-1 tw-text-white tw-font-medium">
