@@ -5,8 +5,10 @@
   >
     <IndividualResult :insider="results" />
   </main>
-  <main v-else class="tw-flex tw-h-screen">
-    <h1 class="tw-m-auto">Loading...</h1>
+  <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
+    <div class="spinner-border tw-m-auto" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
   </main>
 </template>
 

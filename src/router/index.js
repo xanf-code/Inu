@@ -1,10 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
-import InsiderPage from '@/views/InsiderPage.vue'
-import DownloadPage from '@/views/Download.vue'
 import '../../node_modules/nprogress/nprogress.css';
 import NProgress from 'nprogress';
-import Whales from '../views/Whales.vue'
 
 const routes = [
   {
@@ -18,17 +15,17 @@ const routes = [
   {
     path: '/info/:id',
     name: 'InsiderPage',
-    component: InsiderPage,
+    component: () => import('@/views/InsiderPage.vue'),
   },
   {
     path: '/download',
     name: 'DownloadPage',
-    component: DownloadPage,
+    component: () => import('@/views/Download.vue'),
   },
   {
     path: '/whalewatch',
     name: 'Whales',
-    component: Whales,
+    component: () => import('@/views/Whales.vue'),
   },
 ]
 

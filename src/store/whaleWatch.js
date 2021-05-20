@@ -16,7 +16,7 @@ export default function whaleWatch() {
     const whaleAPILoad = async (coin, page) => {
         try {
             const whaleResponse = await axios.get(
-                `https://insiderwhales.herokuapp.com/api/v1/${coin}/data?page=${page}&pagination=10`,
+                `https://insiderwhales.herokuapp.com/api/v1/${coin}/data?page=${page}&pagination=15`,
                 {
                     headers: {
                         Accept: "*/*",

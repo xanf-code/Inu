@@ -5,11 +5,19 @@
   >
     <div v-if="state.showNavBar">
       <div
-        class="tw-flex tw-flex-row tw-overflow-x-scroll tw-whitespace-nowrap tw-scrollbar-hide last:tw-pr-6"
+        class="tw-flex tw-flex-row tw-overflow-x-scroll tw-whitespace-nowrap tw-scrollbar-hide"
       >
-        <router-link to="/whalewatch?type=crypto">
-          <span>Whale Watch</span>
-        </router-link>
+        <nav class="nav flex-column">
+          <router-link to="/whalewatch?type=crypto">
+            <span class="nav-link">🐋 Watch</span>
+          </router-link>
+          <router-link to="/whalewatch?type=crypto">
+            <span class="nav-link">📲 Download</span>
+          </router-link>
+          <router-link to="/whalewatch?type=crypto">
+            <span class="nav-link">🔧 About</span>
+          </router-link>
+        </nav>
         <!-- <MenuItems text="🏠 Home" />
         <MenuItems text="🐋 Watch" />
         <MenuItems text="📲 Download" />
@@ -19,8 +27,10 @@
     <Result :insider="results" />
     <div v-observe-visibility="handleScrollToBottom"></div>
   </main>
-  <main v-else class="tw-flex tw-h-screen">
-    <h1 class="tw-m-auto">Loading...</h1>
+  <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
+    <div class="spinner-border tw-m-auto" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
   </main>
 </template>
 
@@ -28,6 +38,7 @@
 import Result from "@/components/Result";
 import topLevelAPI from "../store/toplevelAPI";
 import toggleNavBar from "../store/NavStore";
+
 //import MenuItems from "../components/MenuItems";
 import { ref } from "vue";
 
@@ -36,7 +47,6 @@ export default {
     Result,
     //MenuItems,
   },
-
   setup() {
     const page = ref(20);
 
