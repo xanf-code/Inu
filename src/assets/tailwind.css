@@ -5,6 +5,14 @@
 @tailwind utilities;
 
 @layer base {
+  *,
+  *::before,
+  *::after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
   body {
     @apply tw-bg-gray-900 tw-text-gray-50;
   }

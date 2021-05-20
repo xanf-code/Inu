@@ -1,5 +1,7 @@
 <template>
-  <div class="tw-flex tw-flex-row sm:tw-flex-row tw-m-5 tw-items-center">
+  <div
+    class="tw-flex tw-flex-row sm:tw-flex-row tw-m-5 tw-items-center tw-bg-opacity-20"
+  >
     <MenuAlt1Icon
       @click="methods.onMenuClick"
       class="tw-cursor-pointer tw-h-6 tw-pt-1 tw-self-center tw-pr-4 tw-text-white"
@@ -20,6 +22,7 @@
 <script>
 import { MenuAlt1Icon } from "@heroicons/vue/solid";
 import toggleNavBar from "../store/NavStore";
+
 export default {
   name: "MobileHeader",
   setup() {

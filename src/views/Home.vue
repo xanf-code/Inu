@@ -28,9 +28,7 @@
     <div v-observe-visibility="handleScrollToBottom"></div>
   </main>
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
-    <div class="spinner-border tw-m-auto" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
+    <Loader />
   </main>
 </template>
 
@@ -38,13 +36,14 @@
 import Result from "@/components/Result";
 import topLevelAPI from "../store/toplevelAPI";
 import toggleNavBar from "../store/NavStore";
-
+import Loader from "../components/Loader";
 //import MenuItems from "../components/MenuItems";
 import { ref } from "vue";
 
 export default {
   components: {
     Result,
+    Loader,
     //MenuItems,
   },
   setup() {

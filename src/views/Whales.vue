@@ -1,5 +1,7 @@
 <template>
-  <CoinSelect :coins="coinList" @get-coin="getNewData" />
+  <div v-if="!state.loading">
+    <CoinSelect :coins="coinList" @get-coin="getNewData" />
+  </div>
   <main
     class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-2 xl:tw-grid-cols-3 tw-pt-2"
     v-if="!state.loading"
@@ -11,18 +13,18 @@
     </div>
   </main>
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
-    <div class="spinner-border tw-m-auto" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
+    <Loader />
   </main>
-  <Pagination
-    :goToFirstPage="goToFirstPage"
-    :onLastPage="onLastPage"
-    :onNextPage="onNextPage"
-    :goToLastPage="goToLastPage"
-    :nextPageNumber="stateStore.nextPage"
-    :lastPageNumber="state.totalPages"
-  />
+  <div v-if="!state.loading">
+    <Pagination
+      :goToFirstPage="goToFirstPage"
+      :onLastPage="onLastPage"
+      :onNextPage="onNextPage"
+      :goToLastPage="goToLastPage"
+      :nextPageNumber="stateStore.nextPage"
+      :lastPageNumber="state.totalPages"
+    />
+  </div>
 </template>
 
 <script>
@@ -30,6 +32,7 @@ import whaleWatch from "../store/whaleWatch";
 import Pagination from "../components/Pagination";
 import CoinSelect from "../components/CoinSelect";
 import Whalesbox from "../components/whalesbox";
+import Loader from "../components/Loader";
 const { whaleAPILoad, state } = whaleWatch();
 import { reactive } from "vue";
 const coinList = [
@@ -53,6 +56,7 @@ const coinList = [
 export default {
   components: {
     Pagination,
+    Loader,
     CoinSelect,
     Whalesbox,
   },
@@ -116,3 +120,4 @@ export default {
   },
 };
 </script>
+
