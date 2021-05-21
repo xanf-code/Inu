@@ -14,33 +14,37 @@
     />
     <div>
       <router-link to="/">
-        <div
-          class="tw-self-center tw-text-xl tw-font-bold tw-cursor-pointer tw-pt-0.5 tw-flex tw-flex-row"
-        >
-          <h1 class="tw-text-white">Shibu&nbsp;</h1>
-          <h1 class="tw-text-purple-600">Insider🐕🚀🚀</h1>
-        </div>
+        <transition name="title" appear>
+          <div
+            class="tw-self-center tw-text-xl tw-font-bold tw-cursor-pointer tw-pt-0.5 tw-flex tw-flex-row"
+          >
+            <h1 class="tw-text-white">Shibu&nbsp;</h1>
+            <h1 class="tw-text-purple-600">Insider🐕🚀🚀</h1>
+          </div>
+        </transition>
       </router-link>
     </div>
   </div>
-  <div v-if="state.dropdown === true" class="tw-absolute tw-flex tw-flex-col">
-    <router-link to="/">
-      <button
-        @click="state.dropdown = false"
-        class="tw-w-full focus:tw-outline-none tw-bg-gray-800 tw-py-4 px-4 tw-text-sm tw-border-bottom tw-text-white"
-      >
-        <h1 class="tw-font-poppins tw-font-bold">Home</h1>
-      </button>
-    </router-link>
-    <router-link to="/whalewatch?type=crypto">
-      <button
-        @click="state.dropdown = false"
-        class="tw-w-full focus:tw-outline-none tw-bg-gray-800 tw-py-4 px-4 tw-text-sm tw-border-bottom tw-text-white"
-      >
-        <h1 class="tw-font-poppins tw-font-bold">Whale Watch</h1>
-      </button>
-    </router-link>
-  </div>
+  <transition name="header">
+    <div v-if="state.dropdown === true" class="tw-absolute tw-flex tw-flex-col">
+      <router-link to="/">
+        <button
+          @click="state.dropdown = false"
+          class="tw-w-full focus:tw-outline-none tw-bg-gray-800 tw-py-4 px-4 tw-text-sm tw-border-bottom tw-text-white"
+        >
+          <h1 class="tw-font-poppins tw-font-bold">Home</h1>
+        </button>
+      </router-link>
+      <router-link to="/whalewatch?type=crypto">
+        <button
+          @click="state.dropdown = false"
+          class="tw-w-full focus:tw-outline-none tw-bg-gray-800 tw-py-4 px-4 tw-text-sm tw-border-bottom tw-text-white"
+        >
+          <h1 class="tw-font-poppins tw-font-bold">Whale Watch</h1>
+        </button>
+      </router-link>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -63,3 +67,29 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/* enter classes */
+.header-enter-from {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+.header-enter-active {
+  transition: all 0.3s ease;
+}
+/* Leave Classes */
+.header-leave-to {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+.header-leave-active {
+  transition: all 0.3s ease;
+}
+.title-enter-from {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+.title-enter-active {
+  transition: all 0.3s ease;
+}
+</style>

@@ -6,21 +6,21 @@
     <IndividualResult :insider="results" />
   </main>
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
-    <div class="spinner-border tw-m-auto" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
+    <Loader />
   </main>
 </template>
 
 <script>
 import IndividualResult from "@/components/IndividualResult";
 import individualAPI from "../store/individualAPI";
+import Loader from "../components/Loader";
 
 export default {
   name: "InsiderPage",
 
   components: {
     IndividualResult,
+    Loader,
   },
 
   setup() {

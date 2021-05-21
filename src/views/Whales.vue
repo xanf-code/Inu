@@ -1,18 +1,22 @@
 <template >
   <div class="tw-flex tw-flex-row tw-justify-between">
-    <div v-if="!state.loading">
-      <CoinSelect :coins="coinList" @get-coin="getNewData" />
-    </div>
+    <transition name="coins" appear>
+      <div v-if="!state.loading">
+        <CoinSelect :coins="coinList" @get-coin="getNewData" />
+      </div>
+    </transition>
     <div v-if="!state.loading" class="tw-mt-1">
-      <Pagination
-        class="tw-justify-center"
-        :goToFirstPage="goToFirstPage"
-        :onLastPage="onLastPage"
-        :onNextPage="onNextPage"
-        :goToLastPage="goToLastPage"
-        :nextPageNumber="stateStore.nextPage"
-        :lastPageNumber="state.totalPages"
-      />
+      <transition name="pagination" appear>
+        <Pagination
+          class="tw-justify-center"
+          :goToFirstPage="goToFirstPage"
+          :onLastPage="onLastPage"
+          :onNextPage="onNextPage"
+          :goToLastPage="goToLastPage"
+          :nextPageNumber="stateStore.nextPage"
+          :lastPageNumber="state.totalPages"
+        />
+      </transition>
     </div>
   </div>
   <main
@@ -20,9 +24,9 @@
     v-if="!state.loading"
   >
     <div v-for="result in state.results" :key="result._id">
-      <div>
+      <transition appear tag="div" name="whales">
         <Whalesbox :results="result" />
-      </div>
+      </transition>
     </div>
   </main>
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
@@ -37,6 +41,7 @@ import Pagination from "../components/Pagination";
 import CoinSelect from "../components/CoinSelect";
 import Whalesbox from "../components/whalesbox";
 import Loader from "../components/Loader";
+
 const { whaleAPILoad, state } = whaleWatch();
 import { reactive } from "vue";
 const coinList = [
@@ -124,3 +129,45 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/* enter classes */
+.coins-enter-from {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+.coins-enter-active {
+  transition: all 0.3s ease;
+}
+/* Leave Classes */
+.coins-leave-to {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+.coins-leave-active {
+  transition: all 0.3s ease;
+}
+/* enter classes */
+.pagination-enter-from {
+  opacity: 0;
+  transform: translateX(60px);
+}
+.pagination-enter-active {
+  transition: all 0.3s ease;
+}
+/* Leave Classes */
+.pagination-leave-to {
+  opacity: 0;
+  transform: translateX(60px);
+}
+.pagination-leave-active {
+  transition: all 0.3s ease;
+}
+.whales-enter-from {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+.whales-enter-active {
+  transition: all 0.5s ease;
+}
+</style>

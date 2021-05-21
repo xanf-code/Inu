@@ -1,6 +1,6 @@
 <template>
   <div
-    class="tw-box-border tw-px-2 tw-py-2 tw-bg-black tw-rounded-md tw-cursor-pointer tw-mr-1.5 tw-ml-1.5 tw-mb-1.5"
+    class="tw-transform tw-box-border tw-translate-y-0 tw-px-2 tw-py-2 tw-bg-black tw-rounded-md tw-cursor-pointer tw-mr-1.5 tw-ml-1.5 tw-mb-1.5 hover:tw--translate-y-0.5"
   >
     <!-- Row-1 [RANK, NAME, CONTRACT] -->
     <div class="tw-flex tw-flex-row tw-justify-between">
