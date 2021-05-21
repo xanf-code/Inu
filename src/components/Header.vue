@@ -7,16 +7,19 @@
         <div
           class="tw-self-center tw-text-xl tw-font-bold tw-cursor-pointer tw-pt-0.5 tw-flex tw-flex-row"
         >
-          <h1 class="tw-text-white">Insider&nbsp;</h1>
-          <h1 class="tw-text-purple-600">Shibu🐕🚀🚀</h1>
+          <h1 class="tw-text-white">Shibu&nbsp;</h1>
+          <h1 class="tw-text-purple-600">Insider🐕🚀🚀</h1>
         </div>
       </router-link>
     </div>
     <div
-      className="tw-flex tw-flex-row tw-cursor-pointer tw-w-12 sm:tw-w-20 tw-space-x-6 tw-mr-7 tw-tracking-widest"
+      className="tw-flex tw-flex-row tw-cursor-pointer tw-w-12 sm:tw-w-20 tw-space-x-6 tw-mr-8 tw-tracking-widest"
     >
       <router-link to="/">
         <HomeIcon class="tw-h-6 hover:tw-animate-bounce" />
+      </router-link>
+      <router-link :to="{ name: 'Whales' }">
+        <EyeIcon class="tw-h-6 hover:tw-animate-bounce" />
       </router-link>
       <router-link :to="{ name: 'DownloadPage' }">
         <DownloadIcon class="tw-h-6 hover:tw-animate-bounce" />
@@ -26,13 +29,14 @@
 </template>
 
 <script>
-import { HomeIcon, DownloadIcon } from "@heroicons/vue/outline";
+import { HomeIcon, DownloadIcon, EyeIcon } from "@heroicons/vue/outline";
 
 export default {
   name: "Header",
   components: {
     HomeIcon,
     DownloadIcon,
+    EyeIcon,
   },
 };
 </script>

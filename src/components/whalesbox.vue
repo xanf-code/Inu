@@ -142,7 +142,7 @@
                 : 'tw-text-yellow-400'
             }`"
           >
-            {{ parseFloat(this.results.percentageChange).toFixed(4) }} %
+            {{ parseFloat(this.results.percentageChange).toFixed(5) }} %
           </h1>
         </div>
       </div>
