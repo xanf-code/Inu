@@ -1,7 +1,21 @@
 <template>
-  <div class="tw-relative tw-inline-flex">
+  <div class="tw-inline-flex">
+    <select
+      v-model="selected"
+      class="tw-border tw-ml-4 tw-mt-3 tw-border-blue-700 tw-rounded-lg tw-text-white tw-h-10 tw-pl-5 tw-pr-5 tw-bg-gray-900 hover:tw-border-yellow-400 focus:tw-outline-none tw-appearance-none tw-font-poppins tw-text-sm"
+      @change="onChange()"
+    >
+      <option
+        class="tw-text-white tw-font-poppins tw-text-sm"
+        v-for="coin in coins"
+        :key="coin.ID"
+        :value="coin.ID"
+      >
+        {{ coin.Name }}
+      </option>
+    </select>
     <svg
-      class="tw-w-2 tw-h-2 tw-absolute tw-top-0 tw-right-0 tw-m-4 tw-pointer-events-none"
+      class="tw-w-2 tw-h-2 tw-mt-4 tw-ml-4 tw-self-center tw-pointer-events-none"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 412 232"
     >
@@ -11,21 +25,6 @@
         fill-rule="nonzero"
       />
     </svg>
-
-    <select
-      v-model="selected"
-      class="tw-border tw-border-gray-300 tw-rounded-lg tw-text-gray-600 tw-h-10 tw-pl-5 tw-pr-10 tw-bg-white hover:tw-border-gray-400 focus:tw-outline-none tw-appearance-none tw-font-poppins tw-text-sm"
-      @change="onChange()"
-    >
-      <option
-        class="tw-text-black tw-font-poppins tw-text-sm"
-        v-for="coin in coins"
-        :key="coin.ID"
-        :value="coin.ID"
-      >
-        {{ coin.Name }}
-      </option>
-    </select>
   </div>
 </template>
 

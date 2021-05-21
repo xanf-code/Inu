@@ -1,6 +1,17 @@
-<template>
-  <div v-if="!state.loading">
-    <CoinSelect :coins="coinList" @get-coin="getNewData" />
+<template >
+  <div class="tw-flex tw-flex-row tw-justify-between">
+    <div v-if="!state.loading">
+      <CoinSelect :coins="coinList" @get-coin="getNewData" />
+    </div>
+    <Pagination
+      class="tw-justify-center"
+      :goToFirstPage="goToFirstPage"
+      :onLastPage="onLastPage"
+      :onNextPage="onNextPage"
+      :goToLastPage="goToLastPage"
+      :nextPageNumber="stateStore.nextPage"
+      :lastPageNumber="state.totalPages"
+    />
   </div>
   <main
     class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-2 xl:tw-grid-cols-3 tw-pt-2"
@@ -15,16 +26,7 @@
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
     <Loader />
   </main>
-  <div v-if="!state.loading">
-    <Pagination
-      :goToFirstPage="goToFirstPage"
-      :onLastPage="onLastPage"
-      :onNextPage="onNextPage"
-      :goToLastPage="goToLastPage"
-      :nextPageNumber="stateStore.nextPage"
-      :lastPageNumber="state.totalPages"
-    />
-  </div>
+  <div v-if="!state.loading"></div>
 </template>
 
 <script>

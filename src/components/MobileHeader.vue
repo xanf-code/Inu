@@ -1,9 +1,9 @@
 <template>
   <div
-    class="tw-flex tw-flex-row sm:tw-flex-row tw-m-5 tw-items-center tw-bg-opacity-20"
+    class="tw-flex tw-flex-row sm:tw-flex-row tw-m-5 tw-items-center tw-bg-opacity-20 tw-relative"
   >
     <MenuAlt1Icon
-      @click="methods.onMenuClick"
+      @click="state.dropdown = !state.dropdown"
       class="tw-cursor-pointer tw-h-6 tw-pt-1 tw-self-center tw-pr-4 tw-text-white"
     />
     <div>
@@ -17,23 +17,43 @@
       </router-link>
     </div>
   </div>
+  <div v-if="state.dropdown === true" class="tw-absolute tw-flex tw-flex-col">
+    <router-link to="/">
+      <button
+        @click="state.dropdown = false"
+        class="tw-w-full focus:tw-outline-none tw-bg-gray-800 tw-py-4 px-4 tw-text-sm tw-border-bottom tw-text-white hover"
+      >
+        <h1 class="tw-font-poppins tw-font-bold">Home</h1>
+      </button>
+    </router-link>
+    <router-link to="/whalewatch?type=crypto">
+      <button
+        @click="state.dropdown = false"
+        class="tw-w-full focus:tw-outline-none tw-bg-gray-800 tw-py-4 px-4 tw-text-sm tw-border-bottom tw-text-white hover"
+      >
+        <h1 class="tw-font-poppins tw-font-bold">Whale Watch</h1>
+      </button>
+    </router-link>
+  </div>
 </template>
 
 <script>
 import { MenuAlt1Icon } from "@heroicons/vue/solid";
-import toggleNavBar from "../store/NavStore";
+import { reactive } from "vue";
+
+const state = reactive({
+  dropdown: false,
+});
 
 export default {
   name: "MobileHeader",
-  setup() {
-    const { state, methods } = toggleNavBar();
-    return {
-      state,
-      methods,
-    };
-  },
   components: {
     MenuAlt1Icon,
+  },
+  setup() {
+    return {
+      state,
+    };
   },
 };
 </script>
