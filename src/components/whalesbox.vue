@@ -8,7 +8,7 @@
         <div class="tw-pt-1">
           <TickerBox :text="`# ${results.rank}`" color="tw-text-white" />
         </div>
-        <div class="tw-self-center">
+        <div class="tw-pt-0.5 tw-self-center">
           <h1 class="tw-font-poppins tw-ml-1 tw-text-white tw-font-medium">
             {{ results.tag }}
           </h1>

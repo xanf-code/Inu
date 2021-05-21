@@ -3,15 +3,17 @@
     <div v-if="!state.loading">
       <CoinSelect :coins="coinList" @get-coin="getNewData" />
     </div>
-    <Pagination
-      class="tw-justify-center"
-      :goToFirstPage="goToFirstPage"
-      :onLastPage="onLastPage"
-      :onNextPage="onNextPage"
-      :goToLastPage="goToLastPage"
-      :nextPageNumber="stateStore.nextPage"
-      :lastPageNumber="state.totalPages"
-    />
+    <div v-if="!state.loading" class="tw-mt-1">
+      <Pagination
+        class="tw-justify-center"
+        :goToFirstPage="goToFirstPage"
+        :onLastPage="onLastPage"
+        :onNextPage="onNextPage"
+        :goToLastPage="goToLastPage"
+        :nextPageNumber="stateStore.nextPage"
+        :lastPageNumber="state.totalPages"
+      />
+    </div>
   </div>
   <main
     class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-2 xl:tw-grid-cols-3 tw-pt-2"
