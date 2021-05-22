@@ -1,6 +1,5 @@
-# shibu 🐕🐶
-
-## Frontend
+# Frontend
+## shibu 🐕🐶
 
 ## Project setup
 ```
