@@ -14,6 +14,6 @@
 
   html,
   body {
-    @apply tw-bg-gray-900 tw-text-gray-50;
+    @apply tw-bg-custom-black tw-text-gray-50;
   }
 }
