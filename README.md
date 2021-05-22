@@ -1,5 +1,7 @@
 # shibu 🐕🐶
 
+## Frontend
+
 ## Project setup
 ```
 npm install
