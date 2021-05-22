@@ -32,7 +32,6 @@
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
     <Loader />
   </main>
-  <div v-if="!state.loading"></div>
 </template>
 
 <script>
