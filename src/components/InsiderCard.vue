@@ -20,7 +20,7 @@
     <div class="tw-flex tw-justify-between">
       <div>
         <h1
-          class="tw-truncate tw-max-w-md tw-font-bold tw-font-poppins tw-pt-2 tw-pl-1 tw-text-white"
+          class="tw-truncate tw-max-w-md tw-font-semibold tw-font-poppins tw-pt-2 tw-pl-1 tw-text-white"
         >
           {{ result.insiderName }}
         </h1>

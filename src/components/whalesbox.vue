@@ -46,7 +46,7 @@
     <div class="tw-mt-2">
       <div class="tw-flex tw-flex-row tw-justify-start">
         <h1
-          class="tw-font-poppins tw-ml-2 tw-font-bold tw-text-blue-600 tw-self-center tw-mr-2.5"
+          class="tw-font-poppins tw-ml-2 tw-font-bold tw-text-purple-800 tw-self-center tw-mr-2.5"
         >
           Current Quantity
         </h1>
@@ -84,7 +84,7 @@
     <div class="tw-mt-2">
       <div class="tw-flex tw-flex-row tw-justify-start">
         <h1
-          class="tw-font-poppins tw-ml-2 tw-font-bold tw-text-blue-600 tw-self-center tw-mr-2.5"
+          class="tw-font-poppins tw-ml-2 tw-font-bold tw-text-purple-800 tw-self-center tw-mr-2.5"
         >
           Quantity Change
         </h1>
@@ -118,7 +118,7 @@
     <div class="tw-mt-2 tw-mb-2">
       <div class="tw-flex tw-flex-row tw-justify-start">
         <h1
-          class="tw-font-poppins tw-ml-2 tw-font-bold tw-text-blue-600 tw-self-center tw-mr-2.5"
+          class="tw-font-poppins tw-ml-2 tw-font-bold tw-text-purple-800 tw-self-center tw-mr-2.5"
         >
           % Change
         </h1>
