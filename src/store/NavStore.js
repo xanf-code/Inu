@@ -1,6 +1,7 @@
 import { reactive } from "vue";
 
 const state = reactive({
+    dropdown: false,
     mobileView: false,
 })
 

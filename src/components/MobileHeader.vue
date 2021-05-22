@@ -25,23 +25,29 @@
       </router-link>
     </div>
   </div>
+  <div
+    @click="state.dropdown = false"
+    v-if="state.dropdown === true"
+    class="tw-bg-custom-gray tw-absolute tw-flex-col tw-w-screen tw-h-full tw-bg-opacity-70"
+  ></div>
   <transition name="header">
-    <div v-if="state.dropdown === true" class="tw-absolute tw-flex tw-flex-col">
+    <div
+      v-if="state.dropdown === true"
+      class="tw-bg-custom-gray tw-absolute tw-flex-col tw-h-screen"
+    >
       <router-link to="/">
-        <button
-          @click="state.dropdown = false"
-          class="tw-w-full focus:tw-outline-none tw-bg-gray-800 tw-py-4 px-4 tw-text-sm tw-border-bottom tw-text-white"
-        >
-          <h1 class="tw-font-poppins tw-font-bold">Home</h1>
-        </button>
+        <div @click="state.dropdown = false">
+          <Icon
+            icon="https://img.icons8.com/fluent-systems-regular/48/ffffff/home.png"
+          />
+        </div>
       </router-link>
       <router-link to="/whalewatch?type=crypto">
-        <button
-          @click="state.dropdown = false"
-          class="tw-w-full focus:tw-outline-none tw-bg-gray-800 tw-py-4 px-4 tw-text-sm tw-border-bottom tw-text-white"
-        >
-          <h1 class="tw-font-poppins tw-font-bold">Whale Watch</h1>
-        </button>
+        <div @click="state.dropdown = false">
+          <Icon
+            icon="https://img.icons8.com/ios-filled/50/ffffff/tail-of-whale.png"
+          />
+        </div>
       </router-link>
     </div>
   </transition>
@@ -49,18 +55,18 @@
 
 <script>
 import { MenuAlt1Icon, XIcon } from "@heroicons/vue/solid";
-import { reactive } from "vue";
-const state = reactive({
-  dropdown: false,
-});
+import NavStore from "../store/NavStore";
+import Icon from "../components/MenuItem";
 
 export default {
   name: "MobileHeader",
   components: {
     MenuAlt1Icon,
     XIcon,
+    Icon,
   },
   setup() {
+    const { state } = NavStore();
     return {
       state,
     };
@@ -71,19 +77,18 @@ export default {
 <style scoped>
 /* enter classes */
 .header-enter-from {
-  opacity: 0;
   transform: translateX(-60px);
 }
 .header-enter-active {
-  transition: all 0.3s ease;
+  transition: all 1s cubic-bezier(0, 0.12, 0.14, 1);
 }
 /* Leave Classes */
 .header-leave-to {
-  opacity: 0;
+  opacity: 1;
   transform: translateX(-60px);
 }
 .header-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.15s cubic-bezier(0.74, 0.06, 0.83, 0.67);
 }
 .title-enter-from {
   opacity: 0;

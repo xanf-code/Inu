@@ -1,4 +1,4 @@
-<template>
+<template >
   <div class="tw-flex tw-flex-col tw-h-screen">
     <header class="tw-bg-black">
       <Header v-if="!state.mobileView" />

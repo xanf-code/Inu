@@ -4,6 +4,7 @@ import router from './router'
 import './assets/tailwind.css'
 import { ObserveVisibility } from 'vue-observe-visibility';
 
+
 const app = createApp(App);
 app.use(router);
 app.directive('observe-visibility', {
