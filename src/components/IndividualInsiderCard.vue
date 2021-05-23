@@ -1,6 +1,6 @@
 <template>
   <div
-    class="tw-box-border tw-h-32 tw-px-2 tw-py-2 tw-bg-black tw-rounded-md tw-cursor-pointer tw-mr-1.5 tw-ml-1.5 tw-mb-1.5"
+    class="tw-box-border tw-h-32 tw-px-2 tw-py-2 tw-bg-black tw-rounded-md tw-cursor-pointer tw-mr-1.5 tw-ml-1.5 tw-mb-1.5 "
   >
     <div class="tw-flex tw-justify-between">
       <div class="tw-flex tw-justify-start">
@@ -20,7 +20,7 @@
     <div class="tw-flex tw-justify-between">
       <div>
         <h1
-          class="tw-truncate tw-max-w-md tw-font-bold tw-font-poppins tw-pt-2 tw-pl-1 tw-text-white"
+          class="tw-truncate tw-max-w-md tw-font-semibold tw-font-poppins tw-pt-2 tw-pl-1 tw-text-white"
         >
           {{ result.insiderName }}
         </h1>

@@ -28,12 +28,12 @@
   <div
     @click="state.dropdown = false"
     v-if="state.dropdown === true"
-    class="tw-bg-custom-gray tw-absolute tw-flex-col tw-w-screen tw-h-full tw-bg-opacity-70"
+    class="tw-bg-black tw-absolute tw-flex-col tw-w-screen tw-h-full tw-bg-opacity-70"
   ></div>
   <transition name="header">
     <div
       v-if="state.dropdown === true"
-      class="tw-bg-custom-gray tw-absolute tw-flex-col tw-h-screen"
+      class="tw-bg-black tw-absolute tw-flex-col tw-h-screen"
     >
       <router-link to="/">
         <div @click="state.dropdown = false">
@@ -80,7 +80,7 @@ export default {
   transform: translateX(-60px);
 }
 .header-enter-active {
-  transition: all 1s cubic-bezier(0, 0.12, 0.14, 1);
+  transition: all 0.2s cubic-bezier(0, 0.12, 0.14, 1);
 }
 /* Leave Classes */
 .header-leave-to {
