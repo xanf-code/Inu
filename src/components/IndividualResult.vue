@@ -4,6 +4,11 @@
     v-for="individual in insider"
     :key="individual._id"
   >
+    <transition appear name="image">
+      <div class="tw-mb-2 tw-ml-2 tw-mr-2">
+        <img :src="individual.tickerImageUrl" :alt="individual.ticker" />
+      </div>
+    </transition>
     <transition appear tag="div" name="insider">
       <IndividualInsiderCard :result="individual" />
     </transition>
@@ -26,6 +31,13 @@ export default {
   transform: translateX(-60px);
 }
 .insider-enter-active {
+  transition: all 0.4s ease;
+}
+.image-enter-from {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+.image-enter-active {
   transition: all 0.4s ease;
 }
 </style>

@@ -71,7 +71,7 @@ export default {
   setup() {
     const stateStore = reactive({
       nextPage: 1,
-      coinName: "safemoon",
+      coinName: "dogecoin",
     });
     const onNextPage = () => {
       if (state.isNext == false) {

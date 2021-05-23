@@ -35,7 +35,7 @@ export default {
   name: "CoinSelect",
   props: ["coins"],
   setup(coins, { emit }) {
-    const selected = ref(2);
+    const selected = ref(1);
     return {
       selected,
       onChange() {
