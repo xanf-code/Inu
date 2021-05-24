@@ -4,11 +4,6 @@
     v-for="individual in insider"
     :key="individual._id"
   >
-    <transition appear name="image">
-      <div class="tw-mb-2 tw-ml-2 tw-mr-2">
-        <img :src="individual.tickerImageUrl" :alt="individual.ticker" />
-      </div>
-    </transition>
     <transition appear tag="div" name="insider">
       <IndividualInsiderCard :result="individual" />
     </transition>
