@@ -3,6 +3,7 @@ import axios from "axios";
 
 const state = reactive({
     results: [],
+    error: " ",
 });
 
 export default function StockData() {
@@ -11,11 +12,12 @@ export default function StockData() {
             const response = await axios.get(
                 `https://intradaystocks.herokuapp.com/api/stocks/${ticker}`
             );
-            state.results = response.data;
+            if (response.data.status === 200) {
+                state.results = response.data.result;
+            }
+            state.error = response.data.status;
         } catch (error) {
             console.log(error);
-        } finally {
-            state.loading = false;
         }
     };
     return {
