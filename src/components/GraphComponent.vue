@@ -1,55 +1,47 @@
 <template>
-  <div v-if="state.error === true"></div>
-  <div v-else>
-    <vue-highcharts
-      type="stockChart"
-      :options="chartData"
-      :animateOnUpdate="true"
-      @rendered="onRender"
-      @destroy="onDestroy"
-    />
+  <div>
+    <JSCharting :options="chartOptions"></JSCharting>
   </div>
 </template>
 
 <script >
-import VueHighcharts from "vue3-highcharts";
-import HighCharts from "highcharts";
-import StockCharts from "highcharts/modules/stock";
-StockCharts(HighCharts);
 import StockData from "../store/stockData";
 import { computed } from "vue";
 
 const { stockDataAPI, state } = StockData();
+import JSCharting from "jscharting-vue";
 
 export default {
   components: {
-    VueHighcharts,
+    JSCharting,
   },
   setup() {
-    const chartData = computed(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    let params = urlParams.get("ticker");
+    stockDataAPI(params);
+
+    const chartOptions = computed(() => {
       return {
+        type: "spline",
+        legend: {
+          template: "%icon %name",
+          position: "inside top left",
+        },
+        yAxis_formatString: "c",
+        xAxis_crosshair_enabled: true,
+        defaultPoint_marker_type: "none",
         series: [
           {
-            data: state.results,
+            points: state.results,
           },
         ],
       };
     });
-    const onRender = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      let params = urlParams.get("ticker");
-      stockDataAPI(params);
-    };
-    const onDestroy = () => {
-      stockDataAPI("");
-    };
     return {
-      chartData,
-      onRender,
-      onDestroy,
-      stockDataAPI,
-      state,
+      chartOptions,
     };
   },
 };
 </script>
+
+
