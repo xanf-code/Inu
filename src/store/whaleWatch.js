@@ -4,6 +4,7 @@ import axios from "axios";
 const state = reactive({
     results: [],
     loading: true,
+    error: "",
     limit: 10,
     totalPages: 1,
     currentPage: 1,
@@ -25,18 +26,21 @@ export default function whaleWatch() {
                     },
                 }
             );
-            state.results = whaleResponse.data.result;
-            state.totalPages = whaleResponse.data.totalPages;
-            state.currentPage = whaleResponse.data.currentPage;
-            state.length = whaleResponse.data.length;
-            state.isLast = whaleResponse.data.isLastPageExist;
-            state.isNext = whaleResponse.data.isNextPageExist;
-            state.limit = 10;
+            if (whaleResponse.status === 200) {
+                state.results = whaleResponse.data.result;
+                state.totalPages = whaleResponse.data.totalPages;
+                state.currentPage = whaleResponse.data.currentPage;
+                state.length = whaleResponse.data.length;
+                state.isLast = whaleResponse.data.isLastPageExist;
+                state.isNext = whaleResponse.data.isNextPageExist;
+                state.limit = 10;
+            } else {
+                state.error = "Error Fetching Data";
+            }
+
         } catch (error) {
             console.log(error);
-        } finally {
-            state.loading = false;
-        }
+        } finally { state.loading = false; }
     };
     return {
         state,

@@ -77,6 +77,7 @@ export default {
       if (state.isNext == false) {
         return;
       }
+      state.loading = true;
       stateStore.nextPage++;
       whaleAPILoad(stateStore.coinName, stateStore.nextPage);
     };
@@ -85,6 +86,7 @@ export default {
       if (state.isLast == false) {
         return;
       }
+      state.loading = true;
       stateStore.nextPage--;
       whaleAPILoad(stateStore.coinName, stateStore.nextPage);
     };
@@ -93,6 +95,7 @@ export default {
       if (stateStore.nextPage == 1) {
         return;
       }
+      state.loading = true;
       stateStore.nextPage = 1;
       whaleAPILoad(stateStore.coinName, stateStore.nextPage);
     };
@@ -101,6 +104,7 @@ export default {
       if (stateStore.nextPage == state.totalPages) {
         return;
       }
+      state.loading = true;
       stateStore.nextPage = state.totalPages;
       whaleAPILoad(stateStore.coinName, stateStore.nextPage);
     };
@@ -108,6 +112,7 @@ export default {
     whaleAPILoad(stateStore.coinName, 1);
 
     const getNewData = (coin) => {
+      // state.loading = true;
       stateStore.coinName = coin.Name;
       whaleAPILoad(coin.Name, 1);
     };
