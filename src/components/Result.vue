@@ -5,7 +5,7 @@
     :key="individual._id"
   >
     <router-link
-      :to="`/info/${individual.insiderName}?ticker=${individual.ticker}`"
+      :to="`/info/${individual.InsiderName}?ticker=${individual.Ticker}`"
     >
       <transition appear tag="div" name="insider">
         <InsiderCard :result="individual" />

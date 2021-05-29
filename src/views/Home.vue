@@ -23,13 +23,13 @@ export default {
     Loader,
   },
   setup() {
-    const page = ref(20);
+    const page = ref(1);
 
     function handleScrollToBottom(isVisible) {
       if (!isVisible) {
         return;
       }
-      page.value += 10;
+      page.value += 1;
       loadAllAPI(page.value);
     }
 

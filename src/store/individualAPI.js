@@ -10,7 +10,7 @@ export default function individualAPI() {
     const individualAPILoad = async () => {
         try {
             const individualResponse = await axios.get(
-                `https://insidershibu.herokuapp.com/scrapedata/getInsiderData/${route.params.id}`
+                `https://screenerapi.herokuapp.com/data/${route.params.id}`
             );
             results.value = individualResponse.data.result;
         } catch (error) {

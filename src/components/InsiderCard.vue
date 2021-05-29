@@ -4,59 +4,83 @@
   >
     <div class="tw-flex tw-justify-between">
       <div class="tw-flex tw-justify-start">
-        <TickerBox :text="result.ticker" color="tw-text-purple-800" />
+        <TickerBox
+          :text="result.Ticker == '' ? 'Anonymous' : result.Ticker"
+          color="tw-text-purple-800"
+        />
         <h1
-          class="tw-truncate tw-text-purple-800 tw-max-w-md tw-font-semibold tw-text-sm tw-self-center tw-font-poppins tw-pl-1 tw-pr-1"
+          class="tw-text-purple-800 tw-max-w-md tw-font-semibold tw-text-sm tw-self-center tw-font-poppins tw-pl-1 tw-pr-1"
         >
-          {{ result.companyName }}
+          {{
+            truncate(
+              result.CompanyName == "" ? "Anonymous" : result.CompanyName,
+              15,
+              "..."
+            )
+          }}
         </h1>
       </div>
       <h1
         class="tw-text-gray-600 tw-font-medium tw-font-poppins tw-truncate tw-text-sm tw-pt-0.5 tw-pr-2"
       >
-        {{ getDate(result.date) }}
+        {{ getDate(result.NotificationDate) }}
       </h1>
     </div>
     <div class="tw-flex tw-justify-between">
       <div>
         <h1
-          class="tw-truncate tw-max-w-md tw-font-semibold tw-font-poppins tw-pt-2 tw-pl-1 tw-text-white"
+          class="tw-capitalize tw-font-semibold tw-font-poppins tw-pt-2 tw-pl-1 tw-text-white"
         >
-          {{ result.insiderName }}
+          {{
+            truncate(
+              result.InsiderName == ""
+                ? "Anonymous"
+                : result.InsiderName.toLowerCase(),
+              20,
+              "..."
+            )
+          }}
         </h1>
         <p
-          class="tw-truncate tw-text-purple-600 tw-font-semibold tw-font-poppins tw-pt-1 tw-pl-1 tw-pb-1.5"
+          class="tw-text-purple-600 tw-font-semibold tw-font-poppins tw-pt-1 tw-pl-1 tw-pb-1.5"
         >
-          {{ result.insiderTitle }}
+          {{
+            truncate(
+              result.InsiderTitle == "" ? "Anonymous" : result.InsiderTitle,
+              20,
+              "..."
+            )
+          }}
         </p>
       </div>
       <div class="tw-pt-1">
         <div
           :class="`tw-flex tw-justify-end ${
-            result.tradeQuantity.includes('+')
+            result.QuantityShares.includes('+')
               ? 'tw-text-yellow-500'
               : 'tw-text-red-600'
           }`"
         >
           <BriefcaseIcon
             :class="`tw-h-4 tw-self-center tw-pr-1 tw-pt-0.5 ${
-              result.value.includes('+')
+              result.Value.includes('+')
                 ? 'tw-text-yellow-500'
                 : 'tw-text-red-600'
             }`"
           />
-          <Trade :text="result.tradeQuantity" />
+          <Trade
+            :text="result.QuantityShares == '' ? '-' : result.QuantityShares"
+          />
         </div>
         <div
           :class="`tw-flex tw-justify-end ${
-            result.stockPercent.includes('+') ||
-            result.stockPercent.includes('New')
+            result.Percentage.includes('+')
               ? 'tw-text-yellow-500'
               : 'tw-text-red-600'
           }`"
         >
           <TrendingUpIcon
-            v-if="result.stockPercent.includes('+')"
+            v-if="result.Percentage.includes('+')"
             class="tw-h-4 tw-self-center tw-pr-1 tw-text-yellow-500"
           />
 
@@ -64,31 +88,43 @@
             v-else
             class="tw-h-4 tw-self-center tw-pr-1 tw-text-red-600"
           />
-          <Trade :text="result.stockPercent" />
+          <Trade :text="result.Percentage == '' ? '-' : result.Percentage" />
         </div>
       </div>
     </div>
     <div class="tw-flex tw-justify-between">
       <div class="tw-flex">
-        <TickerBox :text="result.tradeType" color="tw-text-purple-800" />
+        <TickerBox
+          :text="
+            result.TradeType == 'Planned purchase' ||
+            result.TradeType == 'Planned sale'
+              ? 'Planned'
+              : result.TradeType
+          "
+          color="tw-text-purple-800"
+        />
         <h1
           class="tw-truncate tw-text-white tw-max-w-md tw-font-medium tw-font-poppins tw-pl-1.5 tw-self-center"
         >
-          {{ result.tradePrice }}
+          {{
+            result.Price == ""
+              ? "-"
+              : result.CurrencyCode + " " + result.Price.split(".")[0]
+          }}
         </h1>
       </div>
       <div class="tw-flex">
         <CurrencyDollarIcon
           :class="`tw-h-6 tw-pr-0.5 tw-pt-0.5 hover:tw-animate-spin ${
-            result.value.includes('+')
+            result.Value.includes('+')
               ? 'tw-text-yellow-500'
               : 'tw-text-red-600'
           }`"
         />
         <AmountTickerBox
-          :text="result.value"
+          :text="result.Value == '' ? 'Anonymous' : result.Value"
           :color="`${
-            result.value.includes('+') ? 'tw-text-white' : 'tw-text-red-600'
+            result.Value.includes('+') ? 'tw-text-white' : 'tw-text-red-600'
           }`"
         />
       </div>
@@ -122,6 +158,16 @@ export default {
     AmountTickerBox,
   },
   setup() {
+    function truncate(text, length, clamp) {
+      clamp = clamp || "...";
+      var node = document.createElement("div");
+      node.innerHTML = text;
+      var content = node.textContent;
+      return content.length > length
+        ? content.slice(0, length) + clamp
+        : content;
+    }
+
     function getDate(date) {
       var relativeTime = require("dayjs/plugin/relativeTime");
       dayjs.extend(relativeTime);
@@ -129,6 +175,7 @@ export default {
     }
     return {
       getDate,
+      truncate,
     };
   },
 };
