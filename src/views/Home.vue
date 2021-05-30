@@ -4,6 +4,12 @@
     class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 xl:tw-grid-cols-3 tw-pt-2"
   >
     <Result :insider="results" />
+    <div
+      :v-if="loadingData.value == true"
+      class="tw-flex tw-justify-center tw-self-center"
+    >
+      Loading more data...
+    </div>
     <div v-observe-visibility="handleScrollToBottom"></div>
   </main>
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
@@ -24,18 +30,20 @@ export default {
   },
   setup() {
     const page = ref(1);
+    const loadingData = ref(false);
 
     function handleScrollToBottom(isVisible) {
       if (!isVisible) {
         return;
       }
+      loadingData.value === true;
       page.value += 1;
       loadAllAPI(page.value);
+      loadingData.value === false;
     }
-
     const { results, loading, loadAllAPI } = topLevelAPI();
     loadAllAPI(page.value);
-    return { results, loading, handleScrollToBottom };
+    return { results, loading, handleScrollToBottom, loadingData };
   },
 };
 </script>
