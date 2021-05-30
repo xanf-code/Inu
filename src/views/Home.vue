@@ -4,17 +4,18 @@
     class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 xl:tw-grid-cols-3 tw-pt-2"
   >
     <Result :insider="results" />
-    <div
-      :v-if="loadingData.value == true"
-      class="tw-flex tw-justify-center tw-self-center"
-    >
-      Loading more data...
-    </div>
+
     <div v-observe-visibility="handleScrollToBottom"></div>
   </main>
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
     <Loader />
   </main>
+  <div
+    :v-if="loadingData.value == true"
+    class="tw-flex tw-justify-center tw-self-center"
+  >
+    Loading more data...
+  </div>
 </template>
 
 <script>

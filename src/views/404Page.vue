@@ -5,8 +5,5 @@
 <script>
 export default {
   name: "404Page",
-  created() {
-    document.title = "Oops 404";
-  },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="tw-box-border tw-h-32 tw-px-2 tw-py-2 tw-bg-black tw-rounded-md tw-cursor-pointer tw-mr-1.5 tw-ml-1.5 tw-mb-1.5 hover:tw-animate-pulse"
+    class="tw-box-border tw-border tw-border-black tw-h-32 tw-px-2 tw-py-2 tw-bg-black tw-rounded-md tw-cursor-pointer tw-mr-1.5 tw-ml-1.5 tw-mb-1.5 hover:tw-border-blue-600"
   >
     <div class="tw-flex tw-justify-between">
       <div class="tw-flex tw-justify-start">

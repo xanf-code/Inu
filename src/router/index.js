@@ -22,6 +22,9 @@ const routes = [
     path: '/download',
     name: 'DownloadPage',
     component: () => import('@/views/Download.vue'),
+    meta: {
+      title: "InsiderShibu | Downloads"
+    },
   },
   {
     path: '/whalewatch',
@@ -31,6 +34,10 @@ const routes = [
   {
     path: '/:NotFound(.*)*',
     component: NotFoundPage,
+    name: "errorpage",
+    meta: {
+      title: "404 Page not found"
+    },
   }
 ]
 

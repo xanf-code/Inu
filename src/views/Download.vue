@@ -19,8 +19,5 @@
 <script>
 export default {
   name: "Download",
-  created() {
-    document.title = "InsiderShibu | Download";
-  },
 };
 </script>

@@ -17,7 +17,7 @@ export default {
   },
   setup() {
     const urlParams = new URLSearchParams(window.location.search);
-    let params = urlParams.get("ticker");
+    let params = urlParams.get("symbol");
     stockDataAPI(params);
 
     const chartOptions = computed(() => {

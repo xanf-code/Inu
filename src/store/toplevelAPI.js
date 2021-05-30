@@ -7,7 +7,7 @@ export default function topLevelAPI() {
     const loadAllAPI = async (value) => {
         try {
             const individualResponse = await axios.get(
-                `https://screenerapi.herokuapp.com/data?page=${value}&limit=25`
+                `https://screenerapi.herokuapp.com/data?page=${value}&limit=50`
             );
             results.value.push(...individualResponse.data.result);
         } catch (e) {

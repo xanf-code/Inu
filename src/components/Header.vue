@@ -13,16 +13,37 @@
       </router-link>
     </div>
     <div
-      className="tw-flex tw-flex-row tw-cursor-pointer tw-w-12 sm:tw-w-20 tw-space-x-6 tw-mr-8 tw-tracking-widest"
+      className="tw-flex tw-flex-row tw-cursor-pointer tw-space-x-6 tw-mr-8 tw-tracking-widest"
     >
       <router-link to="/">
-        <HomeIcon class="tw-h-6 hover:tw-animate-bounce" />
+        <div
+          className="tw-flex tw-group tw-items-center tw-font-medium tw-text-sm"
+        >
+          <HomeIcon class="tw-h-6 group-hover:tw-animate-bounce" />
+          <h1 class="tw-font-poppins tw-pl-1 group-hover:tw-animate-bounce">
+            Home
+          </h1>
+        </div>
       </router-link>
       <router-link :to="{ name: 'Whales' }">
-        <EyeIcon class="tw-h-6 hover:tw-animate-bounce" />
+        <div
+          className="tw-flex tw-group tw-items-center tw-font-medium tw-text-sm"
+        >
+          <EyeIcon class="tw-h-6 group-hover:tw-animate-bounce" />
+          <h1 class="tw-font-poppins tw-pl-1 group-hover:tw-animate-bounce">
+            Whales
+          </h1>
+        </div>
       </router-link>
       <router-link :to="{ name: 'DownloadPage' }">
-        <DownloadIcon class="tw-h-6 hover:tw-animate-bounce" />
+        <div
+          className="tw-flex tw-group tw-items-center tw-font-medium tw-text-sm"
+        >
+          <DownloadIcon class="tw-h-6 group-hover:tw-animate-bounce" />
+          <h1 class="tw-font-poppins tw-pl-1 group-hover:tw-animate-bounce">
+            Download
+          </h1>
+        </div>
       </router-link>
     </div>
   </div>
