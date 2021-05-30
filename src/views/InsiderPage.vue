@@ -1,4 +1,7 @@
 <template>
+  <div v-if="!loading">
+    <InsiderTopComponent />
+  </div>
   <main
     v-if="!loading"
     class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 xl:tw-grid-cols-3 tw-pt-2"
@@ -18,13 +21,14 @@ import IndividualResult from "@/components/IndividualResult";
 import individualAPI from "../store/individualAPI";
 import Loader from "../components/Loader";
 // import GraphComponent from "@/components/GraphComponent";
-
+import InsiderTopComponent from "../components/InsiderTopComponent";
 export default {
   name: "InsiderPage",
 
   components: {
     IndividualResult,
     Loader,
+    InsiderTopComponent,
     // GraphComponent,
   },
 

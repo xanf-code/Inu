@@ -5,9 +5,7 @@
     :key="individual._id"
   >
     <router-link
-      :to="`/info/${
-        individual.InsiderName
-      }?symbol=${individual.CompanyName.toLowerCase().replace(/ /g, '-')}`"
+      :to="`/info/${individual.InsiderName}?symbol=${individual.CompanyName}&cc=${individual.CountryCode}`"
     >
       <transition appear tag="div" name="insider">
         <InsiderCard :result="individual" />

@@ -30,6 +30,14 @@ const routes = [
     path: '/whalewatch',
     name: 'Whales',
     component: () => import('@/views/Whales.vue'),
+    meta: {
+      title: "🐳 Watch",
+    }
+  },
+  {
+    path: '/company',
+    name: 'CompanyDetails',
+    component: () => import('@/views/CompanyDetails.vue'),
   },
   {
     path: '/:NotFound(.*)*',

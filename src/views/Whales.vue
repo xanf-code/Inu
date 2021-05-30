@@ -128,9 +128,6 @@ export default {
       getNewData,
     };
   },
-  created() {
-    document.title = "🐳 Watch";
-  },
 };
 </script>
 
