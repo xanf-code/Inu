@@ -1,6 +1,6 @@
 <template>
   <transition appear tag="div" name="company">
-    <div class="tw-flex tw-ml-4 tw-mb-2">
+    <div class="tw-flex tw-ml-4 tw-mt-2">
       <img
         width="30"
         :src="`https://www.countryflags.io/${flag.toLowerCase()}/shiny/64.png`"
