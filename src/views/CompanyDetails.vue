@@ -28,7 +28,12 @@ export default {
     const urlParams = new URLSearchParams(window.location.search);
     let company = urlParams.get("name");
     companyAPILoad(company);
-    return { company, results, loading, companyAPILoad };
+    return {
+      company,
+      results,
+      loading,
+      companyAPILoad,
+    };
   },
   created() {
     document.title = `${this.company.toUpperCase().replace(/-/g, " ")}`;
