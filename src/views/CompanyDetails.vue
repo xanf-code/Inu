@@ -9,7 +9,9 @@
       v-for="result in results"
       :key="result._id"
     >
-      <IndividualInsiderCard :result="result" />
+      <transition appear tag="div" name="insider">
+        <IndividualInsiderCard :result="result" />
+      </transition>
     </div>
   </main>
 </template>
@@ -33,3 +35,13 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.insider-enter-from {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+.insider-enter-active {
+  transition: all 0.4s ease;
+}
+</style>

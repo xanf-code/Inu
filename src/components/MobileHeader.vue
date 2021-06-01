@@ -25,20 +25,16 @@
       </router-link>
     </div>
   </div>
-  <div
-    @click="state.dropdown = false"
-    v-if="state.dropdown === true"
-    class="tw-bg-black tw-absolute tw-flex-col tw-w-screen tw-h-full tw-bg-opacity-70"
-  ></div>
   <transition name="header">
     <div
       v-if="state.dropdown === true"
-      class="tw-bg-black tw-absolute tw-flex-col tw-h-screen"
+      class="tw-bg-black tw-absolute tw-flex-col tw-h-screen tw-w-screen"
     >
       <router-link to="/">
         <div @click="state.dropdown = false">
           <Icon
-            icon="https://img.icons8.com/fluent-systems-regular/48/ffffff/home.png"
+            icon="https://img.icons8.com/fluent-systems-regular/50/ffffff/home.png"
+            text="Home"
           />
         </div>
       </router-link>
@@ -46,6 +42,23 @@
         <div @click="state.dropdown = false">
           <Icon
             icon="https://img.icons8.com/ios-filled/50/ffffff/tail-of-whale.png"
+            text="Whale Watch"
+          />
+        </div>
+      </router-link>
+      <router-link to="#">
+        <div @click="state.dropdown = false">
+          <Icon
+            icon="https://img.icons8.com/material/50/ffffff/feedback--v2.png"
+            text="Feedback"
+          />
+        </div>
+      </router-link>
+      <router-link to="#">
+        <div @click="state.dropdown = false">
+          <Icon
+            icon="https://img.icons8.com/material-sharp/24/ffffff/privacy-policy.png"
+            text="Privacy Policy"
           />
         </div>
       </router-link>
@@ -77,18 +90,18 @@ export default {
 <style scoped>
 /* enter classes */
 .header-enter-from {
-  transform: translateX(-60px);
+  transform: translateX(-400px);
 }
 .header-enter-active {
-  transition: all 0.2s cubic-bezier(0, 0.12, 0.14, 1);
+  transition: all 0.2s ease-in;
 }
 /* Leave Classes */
 .header-leave-to {
   opacity: 1;
-  transform: translateX(-60px);
+  transform: translateX(-400px);
 }
 .header-leave-active {
-  transition: all 0.15s cubic-bezier(0.74, 0.06, 0.83, 0.67);
+  transition: all 0.3s ease-in-out;
 }
 .title-enter-from {
   opacity: 0;
