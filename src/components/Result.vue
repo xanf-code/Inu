@@ -4,13 +4,15 @@
     v-for="individual in insider"
     :key="individual._id"
   >
-    <router-link
-      :to="`/info/${individual.InsiderName}?symbol=${individual.CompanyName}&cc=${individual.CountryCode}`"
-    >
-      <transition appear tag="div" name="insider">
+    <transition appear tag="div" name="insider">
+      <router-link
+        :to="`/info/${
+          individual.InsiderName == '' ? 'Anonymous' : individual.InsiderName
+        }?symbol=${individual.CompanyName}&cc=${individual.CountryCode}`"
+      >
         <InsiderCard :result="individual" />
-      </transition>
-    </router-link>
+      </router-link>
+    </transition>
   </div>
 </template>
 

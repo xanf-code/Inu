@@ -22,6 +22,8 @@ import individualAPI from "../store/individualAPI";
 import Loader from "../components/Loader";
 // import GraphComponent from "@/components/GraphComponent";
 import InsiderTopComponent from "../components/InsiderTopComponent";
+// import StockData from "../store/stockData";
+
 export default {
   name: "InsiderPage",
 
@@ -33,12 +35,18 @@ export default {
   },
 
   setup() {
+    // const urlParams = new URLSearchParams(window.location.search);
+    // let company = urlParams.get("symbol");
+    // let companyName = company.toLowerCase().replace(/ /g, "-");
     const { results, loading, individualAPILoad, route } = individualAPI();
+    // const { stockDataAPI } = StockData();
+    // stockDataAPI(companyName);
     individualAPILoad();
     return {
       results,
       loading,
       route,
+      // stockDataAPI,
     };
   },
   created() {
