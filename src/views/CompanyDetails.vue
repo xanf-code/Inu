@@ -1,6 +1,12 @@
 <template>
-  <!-- <div class="md:tw-ml-8 md:tw-mr-8 tw-mr-4">
-    <apexchart type="area" :options="chartOptions" :series="series"></apexchart>
+  <!-- <div class="tw-w-screen">
+    <vue-highcharts
+      type="stockChart"
+      :options="chartData"
+      :animateOnUpdate="true"
+      @rendered="onRender"
+      @destroy="onDestroy"
+    />
   </div> -->
   <main
     v-if="!loading"
@@ -21,103 +27,65 @@
 <script>
 import companyAPI from "../store/companyAPI";
 import IndividualInsiderCard from "../components/IndividualInsiderCard";
-// import VueApexCharts from "vue3-apexcharts";
 // import StockData from "../store/stockData";
+// import VueHighcharts from "vue3-highcharts";
+// import HighCharts from "highcharts";
+// import StockCharts from "highcharts/modules/stock";
+// import { computed } from "vue";
+// const { store, stockDataAPI } = StockData();
+const { results, loading, companyAPILoad } = companyAPI();
+
+// StockCharts(HighCharts);
 
 export default {
   components: {
     IndividualInsiderCard,
-    // apexchart: VueApexCharts
+    // VueHighcharts,
   },
   name: "CompanyDetails",
   setup() {
-    // const { loadingStockData, stockResult, stockDataAPI } = StockData();
-    const { results, loading, companyAPILoad } = companyAPI();
     const urlParams = new URLSearchParams(window.location.search);
     let company = urlParams.get("name");
-    // let companyName = company
-    //   .toLowerCase()
-    //   .replace("(", "")
-    //   .replace(")", "")
-    //   .replace(/ /g, "-");
+    let companyName = company
+      .toLowerCase()
+      .replace("(", "")
+      .replace(")", "")
+      .replace(/ /g, "-");
     // stockDataAPI(companyName);
     companyAPILoad(company);
+    // const onRender = () => {
+    //   const urlParams = new URLSearchParams(window.location.search);
+    //   let company = urlParams.get("name");
+    //   let companyName = company
+    //     .toLowerCase()
+    //     .replace("(", "")
+    //     .replace(")", "")
+    //     .replace(/ /g, "-");
+    //   stockDataAPI(companyName);
+    // };
+    // const chartData = computed(() => {
+    //   return {
+    //     series: [
+    //       {
+    //         data: store.stockResult,
+    //       },
+    //     ],
+    //   };
+    // });
+    // const onDestroy = () => {
+    //   stockDataAPI("");
+    // };
     return {
-      // loadingStockData,
-      // stockResult,
+      // store,
       // stockDataAPI,
       company,
       results,
       loading,
       companyAPILoad,
-      // chartOptions: {
-      //   noData: {
-      //     text: "Data not available :(",
-      //     align: "center",
-      //   },
-      //   tooltip: {
-      //     theme: "dark",
-      //   },
-      //   grid: {
-      //     show: false,
-      //     type: "gradient",
-      //     gradient: {
-      //       shadeIntensity: 1,
-      //       inverseColors: false,
-      //       opacityFrom: 0.5,
-      //       opacityTo: 0,
-      //       stops: [0, 90, 100],
-      //     },
-      //   },
-      //   chart: {
-      //     type: "area",
-      //     stacked: false,
-      //     toolbar: {
-      //       show: true,
-      //       tools: {
-      //         download: false,
-      //         selection: false,
-      //         zoom: true,
-      //         zoomin: true,
-      //         zoomout: true,
-      //         pan: false,
-      //         reset: true,
-      //       },
-      //     },
-      //   },
-      //   xaxis: {
-      //     type: "string",
-      //     categories: stockResult.value.date,
-      //     labels: {
-      //       show: false,
-      //     },
-      //     axisBorder: {
-      //       show: false,
-      //     },
-      //     axisTicks: {
-      //       show: false,
-      //     },
-      //   },
-      //   yaxis: {
-      //     labels: {
-      //       style: {
-      //         colors: ["#FFFAFA", "#FFFFFF"],
-      //       },
-      //     },
-      //     axisBorder: {
-      //       show: false,
-      //     },
-      //     axisTicks: {
-      //       show: false,
-      //     },
-      //   },
-      // },
-      // series: [
-      //   {
-      //     name: company,
-      //     data: stockResult.value.open,
-      //   },
-      // ],
+      companyName,
+      // chartData,
+      // onRender,
+      // onDestroy,
     };
   },
   created() {

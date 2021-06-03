@@ -1,21 +1,26 @@
-import { ref } from "vue";
-const HttpsProxyAgent = require('https-proxy-agent');
+import { reactive } from "vue";
+// const HttpsProxyAgent = require('https-proxy-agent');
 
 const axiosDefaultConfig = {
     proxy: false,
-    httpsAgent: new HttpsProxyAgent('http://89.109.7.67:443')
+    // httpsAgent: new HttpsProxyAgent('http://89.109.7.67:443')
 };
 
 const axios = require('axios').create(axiosDefaultConfig);
+const store = reactive({
+    stockResult: [],
+    error: " ",
+    loadingStockData: false,
+});
 
-const stockResult = ref([]);
-const error = ref("");
-const loadingStockData = ref(false);
+// const stockResult = ref([]);
+// const error = ref("");
+// const loadingStockData = ref(false);
 
 export default function StockData() {
     const stockDataAPI = async (ticker) => {
         try {
-            loadingStockData.value == true;
+            store.loadingStockData == true;
             await axios.get(
                 `https://intradaystocks.herokuapp.com/api/stocks/${ticker}`, {
                 headers: {
@@ -25,17 +30,15 @@ export default function StockData() {
                 },
             }
             ).then((response) => {
-                stockResult.value = response.data;
-                loadingStockData.value == false;
+                store.stockResult = response.data.result;
+                store.loadingStockData == false;
             });
         } catch (error) {
-            error.message = error.value;
+            store.error = error.message;
         }
     };
     return {
-        loadingStockData,
-        stockResult,
-        error,
+        store,
         stockDataAPI,
     };
 }
