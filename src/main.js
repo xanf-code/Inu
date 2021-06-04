@@ -3,11 +3,11 @@ import App from './App.vue'
 import router from './router'
 import './assets/tailwind.css'
 import { ObserveVisibility } from 'vue-observe-visibility';
-import VueHighcharts from 'vue3-highcharts';
+import VueApexCharts from "vue3-apexcharts";
 
 const app = createApp(App);
 app.use(router);
-app.use(VueHighcharts);
+app.use(VueApexCharts);
 app.directive('observe-visibility', {
     beforeMount: (el, binding, vnode) => {
         vnode.context = binding.instance;
