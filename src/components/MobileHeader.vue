@@ -80,6 +80,14 @@
           />
         </div>
       </router-link>
+      <router-link to="#">
+        <div @click="state.dropdown = false">
+          <Icon
+            icon="https://img.icons8.com/material-sharp/50/ffffff/more.png"
+            text="More"
+          />
+        </div>
+      </router-link>
     </div>
   </transition>
 </template>
