@@ -13,7 +13,7 @@ app.directive('observe-visibility', {
         vnode.context = binding.instance;
         ObserveVisibility.bind(el, binding, vnode);
     },
-    update: ObserveVisibility.update,
+    updated: ObserveVisibility.update,
     unmounted: ObserveVisibility.unbind,
 });
 app.component('vue-observe-visibility', ObserveVisibility);
