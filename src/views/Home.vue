@@ -43,10 +43,10 @@ export default {
       if (!isVisible) {
         return;
       }
-      loadingData.value == true;
+      loadingData.value = true;
       page.value += 1;
       loadAllAPI(page.value);
-      loadingData.value == false;
+      loadingData.value = false;
     }
     const { results, loading, loadAllAPI } = topLevelAPI();
     loadAllAPI(page.value);
