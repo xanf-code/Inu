@@ -1,10 +1,16 @@
 <template>
-  <div class="tw-mr-4 tw-ml-4">
+  <div class="tw-mr-4 tw-ml-2">
     <apexchart type="area" :options="chartOptions" :series="series"></apexchart>
   </div>
   <main
     v-if="!loading"
-    class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 xl:tw-grid-cols-3 tw-pt-2"
+    class="
+      tw-grid tw-grid-cols-1
+      md:tw-grid-cols-2
+      lg:tw-grid-cols-3
+      xl:tw-grid-cols-3
+      tw-pt-2
+    "
   >
     <div
       class="tw-flex tw-flex-col"
@@ -24,6 +30,7 @@ import IndividualInsiderCard from "../components/IndividualInsiderCard";
 const { results, loading, companyAPILoad } = companyAPI();
 import { onUnmounted, onMounted, ref } from "vue";
 const axios = require("axios");
+
 let dateData = ref([]);
 let valueData = ref([]);
 
@@ -43,7 +50,7 @@ export default {
     onMounted(() => {
       companyAPILoad(company);
       axios
-        .get(`http://localhost:5000/api/stocks/${companyName}`, {
+        .get(`https://intradaystocks.herokuapp.com/api/stocks/${companyName}`, {
           headers: {
             authority: "www.insiderscreener.com",
             accept: "application/json",
@@ -66,28 +73,7 @@ export default {
       companyAPILoad,
       companyName,
       chartOptions: {
-        title: {
-          text: company,
-          align: "left",
-          style: {
-            fontSize: "14px",
-            fontWeight: "semi-bold",
-            fontFamily: "Poppins",
-            color: "#ffffff",
-          },
-        },
-        dataLabels: {
-          enabled: false,
-        },
-        noData: {
-          text: "Data not available :(",
-          align: "center",
-        },
-        tooltip: {
-          theme: "dark",
-        },
-        grid: {
-          show: false,
+        fill: {
           type: "gradient",
           gradient: {
             shadeIntensity: 1,
@@ -96,6 +82,39 @@ export default {
             opacityTo: 0,
             stops: [0, 90, 100],
           },
+        },
+        title: {
+          text: company,
+          align: "left",
+          style: {
+            fontSize: "16px",
+            fontWeight: "bold",
+            fontFamily: "Poppins",
+            color: "#008ffb",
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        noData: {
+          text: "no data available",
+          align: "center",
+          style: {
+            fontSize: "14px",
+            fontWeight: "bold",
+            fontFamily: "Poppins",
+            color: "#ffffff",
+          },
+        },
+        tooltip: {
+          theme: "dark",
+          style: {
+            fontSize: "12px",
+            fontFamily: "Poppins",
+          },
+        },
+        grid: {
+          show: false,
         },
         chart: {
           type: "area",
@@ -114,7 +133,7 @@ export default {
           },
         },
         xaxis: {
-          type: "category",
+          type: "datetime",
           categories: dateData.value,
           labels: {
             show: false,
@@ -129,6 +148,9 @@ export default {
         yaxis: {
           labels: {
             style: {
+              fontSize: "12px",
+              fontFamily: "Poppins",
+              fontWeight: 400,
               colors: ["#FFFAFA", "#FFFFFF"],
             },
           },
