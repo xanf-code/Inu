@@ -1,7 +1,13 @@
 <template>
   <main
     v-if="!loading"
-    class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 xl:tw-grid-cols-3 tw-pt-2"
+    class="
+      tw-grid tw-grid-cols-1
+      md:tw-grid-cols-2
+      lg:tw-grid-cols-3
+      xl:tw-grid-cols-3
+      tw-pt-2
+    "
   >
     <Result :insider="results" />
 
@@ -14,7 +20,7 @@
     :v-if="loadingData.value == true"
     class="tw-flex tw-justify-center tw-self-center"
   >
-    Loading more data...
+    <h1>Loading more data...</h1>
   </div>
 </template>
 
@@ -37,10 +43,10 @@ export default {
       if (!isVisible) {
         return;
       }
-      loadingData.value === true;
+      loadingData.value == true;
       page.value += 1;
       loadAllAPI(page.value);
-      loadingData.value === false;
+      loadingData.value == false;
     }
     const { results, loading, loadAllAPI } = topLevelAPI();
     loadAllAPI(page.value);

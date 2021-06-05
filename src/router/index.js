@@ -42,7 +42,7 @@ const routes = [
   {
     path: '/:NotFound(.*)*',
     component: NotFoundPage,
-    name: "errorpage",
+    name: "ErrorPage",
     meta: {
       title: "404 Page not found"
     },
