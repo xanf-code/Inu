@@ -20,6 +20,7 @@ module.exports = {
     extend: {
       animation: ['hover', 'focus', 'group-hover'],
       margin: ['first', 'last'],
+      borderWidth: ['hover', 'focus'],
     },
   },
   plugins: [

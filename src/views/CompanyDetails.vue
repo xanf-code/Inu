@@ -97,7 +97,7 @@ export default {
           enabled: false,
         },
         noData: {
-          text: "no data available",
+          text: "Loading..",
           align: "center",
           style: {
             fontSize: "14px",
