@@ -20,7 +20,7 @@
     :v-if="loadingData.value == true"
     class="tw-flex tw-justify-center tw-self-center"
   >
-    <h1>Loading more data...</h1>
+    <n-spin size="medium" />
   </div>
 </template>
 

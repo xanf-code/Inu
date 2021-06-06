@@ -46,7 +46,8 @@ export default {
       .toLowerCase()
       .replace("(", "")
       .replace(")", "")
-      .replace(/ /g, "-");
+      .replace(/ /g, "-")
+      .replace(".", " ");
     onMounted(() => {
       companyAPILoad(company);
       axios
