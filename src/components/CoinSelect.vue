@@ -2,7 +2,21 @@
   <div class="tw-inline-flex">
     <select
       v-model="selected"
-      class="tw-border tw-ml-4 tw-mt-3 tw-border-blue-700 tw-rounded-lg tw-text-white tw-h-10 tw-pl-5 tw-pr-5 tw-bg-gray-900 hover:tw-border-yellow-400 focus:tw-outline-none tw-appearance-none tw-font-poppins tw-text-sm"
+      class="
+        tw-border
+        tw-ml-4
+        tw-mt-3
+        tw-border-blue-700
+        tw-rounded-lg
+        tw-text-white
+        tw-h-10
+        tw-pl-5
+        tw-pr-5
+        tw-bg-gray-900
+        hover:tw-border-yellow-400
+        focus:tw-outline-none
+        tw-appearance-none tw-font-poppins tw-text-sm
+      "
       @change="onChange()"
     >
       <option
@@ -15,7 +29,9 @@
       </option>
     </select>
     <svg
-      class="tw-w-2 tw-h-2 tw-mt-4 tw-ml-4 tw-self-center tw-pointer-events-none"
+      class="
+        tw-w-2 tw-h-2 tw-mt-4 tw-ml-4 tw-self-center tw-pointer-events-none
+      "
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 412 232"
     >

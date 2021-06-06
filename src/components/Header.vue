@@ -57,12 +57,29 @@
           </h1>
         </div>
       </router-link>
+      <router-link :to="{ name: 'DownloadPage' }">
+        <div
+          className="tw-flex tw-group tw-items-center tw-font-medium tw-text-sm"
+        >
+          <DotsCircleHorizontalIcon
+            class="tw-h-6 group-hover:tw-animate-bounce"
+          />
+          <h1 class="tw-font-poppins tw-pl-1 group-hover:tw-animate-bounce">
+            Contact
+          </h1>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-import { HomeIcon, DownloadIcon, EyeIcon } from "@heroicons/vue/outline";
+import {
+  HomeIcon,
+  DownloadIcon,
+  EyeIcon,
+  DotsCircleHorizontalIcon,
+} from "@heroicons/vue/outline";
 
 export default {
   name: "Header",
@@ -70,6 +87,7 @@ export default {
     HomeIcon,
     DownloadIcon,
     EyeIcon,
+    DotsCircleHorizontalIcon,
   },
 };
 </script>
