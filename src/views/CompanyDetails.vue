@@ -1,5 +1,5 @@
 <template>
-  <div class="tw-mr-4 tw-ml-2">
+  <div class="tw-mr-4 tw-ml-2 tw-mt-2 tw-mb-2">
     <apexchart type="area" :options="chartOptions" :series="series"></apexchart>
   </div>
   <main
