@@ -7,6 +7,7 @@
       @update:value="getNewData"
       placeholder="Select Country"
       :options="options"
+      style="background-color: rgb(0 0 0)"
     />
   </div>
   <!-- Main -->
@@ -47,6 +48,10 @@ import topLevelAPI from "../store/toplevelAPI";
 import Loader from "../components/Loader";
 import { reactive } from "vue";
 import HomePagination from "../components/HomePagination";
+const stateStore = reactive({
+  nextPage: 1,
+  selectedValue: "US",
+});
 
 export default {
   components: {
@@ -55,12 +60,9 @@ export default {
     HomePagination,
   },
   setup() {
-    const stateStore = reactive({
-      nextPage: 1,
-      selectedValue: "US",
-    });
-
     const { state, loadAllAPI } = topLevelAPI();
+
+    loadAllAPI(1, stateStore.selectedValue);
 
     const onNextPage = () => {
       if (state.isNext == false) {
@@ -98,14 +100,11 @@ export default {
       loadAllAPI(stateStore.nextPage, stateStore.selectedValue);
     };
 
-    loadAllAPI(1, stateStore.selectedValue);
-
     const getNewData = (value) => {
       if (value == stateStore.selectedValue) {
         return;
       }
       state.loading = true;
-      state.results = [];
       stateStore.nextPage = 1;
       stateStore.selectedValue = value;
       loadAllAPI(stateStore.nextPage, stateStore.selectedValue);
