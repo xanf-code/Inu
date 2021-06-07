@@ -40,7 +40,6 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
     "naive-ui": "^2.11.3",
-    "vfonts": "^0.1.0",
     "vue-cli-plugin-tailwind": "~2.0.6",
     "vue-cli-plugin-vuetify": "~2.4.0"
   }

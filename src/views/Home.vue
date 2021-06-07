@@ -11,7 +11,7 @@
   </div>
   <!-- Main -->
   <main
-    v-if="!loading"
+    v-if="!state.loading"
     class="
       tw-grid tw-grid-cols-1
       md:tw-grid-cols-2
@@ -21,22 +21,23 @@
     "
   >
     <!-- Insider Results -->
-    <Result :insider="results" />
-    <!-- Check Visibility -->
-    <div v-observe-visibility="handleScrollToBottom"></div>
+    <Result :insider="state.results" />
   </main>
   <!-- Middle Loader -->
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
     <Loader />
   </main>
-  <!-- Spinner -->
-  <div
-    :v-if="loadingData.value == true"
-    class="tw-flex tw-justify-center tw-self-center"
-  >
-    <div class="tw-my-4">
-      <n-spin size="medium" />
-    </div>
+  <!-- Pagination -->
+  <div class="tw-mb-6">
+    <HomePagination
+      class="tw-justify-center"
+      :goToFirstPage="goToFirstPage"
+      :onLastPage="onLastPage"
+      :onNextPage="onNextPage"
+      :goToLastPage="goToLastPage"
+      :nextPageNumber="stateStore.nextPage"
+      :lastPageNumber="state.totalPages"
+    />
   </div>
 </template>
 
@@ -44,46 +45,80 @@
 import Result from "@/components/Result";
 import topLevelAPI from "../store/toplevelAPI";
 import Loader from "../components/Loader";
-import { ref, onBeforeMount } from "vue";
-const selectedValue = ref("US");
-const page = ref(1);
-const loadingData = ref(false);
+import { reactive } from "vue";
+import HomePagination from "../components/HomePagination";
 
 export default {
   components: {
     Result,
     Loader,
+    HomePagination,
   },
   setup() {
-    const { results, loading, loadAllAPI } = topLevelAPI();
-    function handleScrollToBottom(isVisible) {
-      if (!isVisible) {
-        return;
-      }
-      loadingData.value = true;
-      page.value += 1;
-      loadAllAPI(page.value, selectedValue.value);
-      loadingData.value = false;
-    }
-    onBeforeMount(() => {
-      loadAllAPI(page.value, selectedValue.value);
+    const stateStore = reactive({
+      nextPage: 1,
+      selectedValue: "US",
     });
-    const getNewData = (value) => {
-      if (value == selectedValue.value) {
+
+    const { state, loadAllAPI } = topLevelAPI();
+
+    const onNextPage = () => {
+      if (state.isNext == false) {
         return;
       }
-      results.value = [];
-      page.value = 1;
-      selectedValue.value = value;
-      loadAllAPI(page.value, selectedValue.value);
+      state.loading = true;
+      stateStore.nextPage++;
+      loadAllAPI(stateStore.nextPage, stateStore.selectedValue);
     };
+
+    const onLastPage = () => {
+      if (state.isLast == false) {
+        return;
+      }
+      state.loading = true;
+      stateStore.nextPage--;
+      loadAllAPI(stateStore.nextPage, stateStore.selectedValue);
+    };
+
+    const goToFirstPage = () => {
+      if (stateStore.nextPage == 1) {
+        return;
+      }
+      state.loading = true;
+      stateStore.nextPage = 1;
+      loadAllAPI(stateStore.nextPage, stateStore.selectedValue);
+    };
+
+    const goToLastPage = () => {
+      if (stateStore.nextPage == state.totalPages) {
+        return;
+      }
+      state.loading = true;
+      stateStore.nextPage = state.totalPages;
+      loadAllAPI(stateStore.nextPage, stateStore.selectedValue);
+    };
+
+    loadAllAPI(1, stateStore.selectedValue);
+
+    const getNewData = (value) => {
+      if (value == stateStore.selectedValue) {
+        return;
+      }
+      state.loading = true;
+      state.results = [];
+      stateStore.nextPage = 1;
+      stateStore.selectedValue = value;
+      loadAllAPI(stateStore.nextPage, stateStore.selectedValue);
+    };
+
     return {
       getNewData,
-      selectedValue,
-      results,
-      loading,
-      handleScrollToBottom,
-      loadingData,
+      stateStore,
+      state,
+      onNextPage,
+      onLastPage,
+      goToFirstPage,
+      goToLastPage,
       options: [
         {
           label: "Western Market",
@@ -94,8 +129,12 @@ export default {
           value: "US",
         },
         {
-          label: "European Market",
+          label: "Rest of the world",
           disabled: true,
+        },
+        {
+          label: "India",
+          value: "IN",
         },
         {
           label: "Germany",
@@ -132,14 +171,6 @@ export default {
         {
           label: "Greece",
           value: "GR",
-        },
-        {
-          label: "Asian Market",
-          disabled: true,
-        },
-        {
-          label: "India",
-          value: "IN",
         },
       ],
     };
