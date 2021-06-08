@@ -1,6 +1,20 @@
 <template>
   <div
-    class="tw-box-border tw-border tw-border-black tw-h-32 tw-px-2 tw-py-2 tw-bg-black tw-rounded-md tw-cursor-pointer tw-mr-1.5 tw-ml-1.5 tw-mb-1.5 hover:tw-border-blue-600"
+    class="
+      tw-box-border
+      tw-border
+      tw-border-black
+      tw-h-32
+      tw-px-2
+      tw-py-2
+      tw-bg-black
+      tw-rounded-md
+      tw-cursor-pointer
+      tw-mr-1.5
+      tw-ml-1.5
+      tw-mb-1.5
+      hover:tw-border-blue-600
+    "
   >
     <div class="tw-flex tw-justify-between">
       <div class="tw-flex tw-justify-start">
@@ -9,7 +23,16 @@
           color="tw-text-purple-800"
         />
         <h1
-          class="tw-text-purple-800 tw-max-w-md tw-font-semibold tw-text-sm tw-self-center tw-font-poppins tw-pl-1 tw-pr-1"
+          class="
+            tw-text-purple-800
+            tw-max-w-md
+            tw-font-semibold
+            tw-text-sm
+            tw-self-center
+            tw-font-poppins
+            tw-pl-1
+            tw-pr-1
+          "
         >
           {{
             truncate(
@@ -21,7 +44,15 @@
         </h1>
       </div>
       <h1
-        class="tw-text-gray-600 tw-font-medium tw-font-poppins tw-truncate tw-text-sm tw-pt-0.5 tw-pr-2"
+        class="
+          tw-text-gray-600
+          tw-font-medium
+          tw-font-poppins
+          tw-truncate
+          tw-text-sm
+          tw-pt-0.5
+          tw-pr-2
+        "
       >
         {{ getDate(result.NotificationDate) }}
       </h1>
@@ -29,7 +60,14 @@
     <div class="tw-flex tw-justify-between">
       <div>
         <h1
-          class="tw-capitalize tw-font-semibold tw-font-poppins tw-pt-2 tw-pl-1 tw-text-white"
+          class="
+            tw-capitalize
+            tw-font-semibold
+            tw-font-poppins
+            tw-pt-2
+            tw-pl-1
+            tw-text-white
+          "
         >
           {{
             truncate(
@@ -42,7 +80,14 @@
           }}
         </h1>
         <p
-          class="tw-text-purple-600 tw-font-semibold tw-font-poppins tw-pt-1 tw-pl-1 tw-pb-1.5"
+          class="
+            tw-text-purple-600
+            tw-font-semibold
+            tw-font-poppins
+            tw-pt-1
+            tw-pl-1
+            tw-pb-1.5
+          "
         >
           {{
             truncate(
@@ -104,7 +149,15 @@
           color="tw-text-purple-800"
         />
         <h1
-          class="tw-truncate tw-text-white tw-max-w-md tw-font-medium tw-font-poppins tw-pl-1.5 tw-self-center"
+          class="
+            tw-truncate
+            tw-text-white
+            tw-max-w-md
+            tw-font-medium
+            tw-font-poppins
+            tw-pl-1.5
+            tw-self-center
+          "
         >
           {{
             result.Price == ""

@@ -28,8 +28,14 @@
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
     <Loader />
   </main>
+  <div
+    class="tw-flex tw-justify-center tw-self-center"
+    v-show="state.error != ''"
+  >
+    <h1 class="tw-font-poppins">{{ state.error }}</h1>
+  </div>
   <!-- Pagination -->
-  <div class="tw-mb-6">
+  <div v-show="state.dataPresent" class="tw-mb-6">
     <HomePagination
       class="tw-justify-center"
       :goToFirstPage="goToFirstPage"
@@ -92,7 +98,7 @@ export default {
     };
 
     const goToLastPage = () => {
-      if (stateStore.nextPage == state.totalPages) {
+      if (state.isNext == false || stateStore.nextPage == state.totalPages) {
         return;
       }
       state.loading = true;

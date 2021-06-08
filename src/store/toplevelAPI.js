@@ -10,20 +10,32 @@ const state = reactive({
     length: null,
     isNext: true,
     isLast: false,
+    dataPresent: false,
 });
 
 export default function topLevelAPI() {
     const loadAllAPI = async (value, code) => {
         try {
+            state.dataPresent = false;
+            state.error = '';
             const individualResponse = await axios.get(
                 `https://screenerapi.herokuapp.com/data?page=${value}&country=${code}`
             );
-            state.results = individualResponse.data.result;
-            state.totalPages = individualResponse.data.totalPages;
-            state.currentPage = individualResponse.data.currentPage;
-            state.length = individualResponse.data.length;
-            state.isLast = individualResponse.data.isLastPageExist;
-            state.isNext = individualResponse.data.isNextPageExist;
+            const arrayData = individualResponse.data;
+            if (arrayData.length > 0) {
+                state.results = arrayData.result;
+                state.totalPages = arrayData.totalPages;
+                state.currentPage = arrayData.currentPage;
+                state.length = arrayData.length;
+                state.isLast = arrayData.isLastPageExist;
+                state.isNext = arrayData.isNextPageExist;
+                state.dataPresent = true;
+            }
+            else {
+                state.dataPresent = false;
+                state.results = [];
+                state.error = "No data found. Please try again later";
+            }
         } catch (e) {
             console.error(e);
         } finally {
