@@ -2,22 +2,19 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import './assets/tailwind.css'
-import { ObserveVisibility } from 'vue-observe-visibility';
 import VueApexCharts from "vue3-apexcharts";
 import naive from "naive-ui";
+import VueGtag from "vue-gtag";
+import { GA_KEY } from "../keys/keys.js"
 
 const app = createApp(App);
 app.use(router);
 app.use(VueApexCharts);
 app.use(naive);
-app.directive('observe-visibility', {
-    beforeMount: (el, binding, vnode) => {
-        vnode.context = binding.instance;
-        ObserveVisibility.bind(el, binding, vnode);
+app.use(VueGtag, {
+    config: {
+        id: GA_KEY,
     },
-    updated: ObserveVisibility.update,
-    unmounted: ObserveVisibility.unbind,
-});
-app.component('vue-observe-visibility', ObserveVisibility);
-
+}, router);
+console.log(GA_KEY);
 app.mount('#app');

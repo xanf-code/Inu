@@ -26,7 +26,7 @@
     "tailwind-scrollbar-hide": "^1.0.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue": "^3.0.0",
-    "vue-observe-visibility": "^1.0.0",
+    "vue-gtag": "^2.0.1",
     "vue-router": "^4.0.8",
     "vue3-apexcharts": "^1.4.0"
   },
