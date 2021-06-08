@@ -62,7 +62,7 @@ export default {
   setup() {
     const { state, loadAllAPI } = topLevelAPI();
 
-    loadAllAPI(1, stateStore.selectedValue);
+    loadAllAPI(stateStore.nextPage, stateStore.selectedValue);
 
     const onNextPage = () => {
       if (state.isNext == false) {
