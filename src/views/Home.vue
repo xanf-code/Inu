@@ -54,6 +54,8 @@ import topLevelAPI from "../store/toplevelAPI";
 import Loader from "../components/Loader";
 import { reactive } from "vue";
 import HomePagination from "../components/HomePagination";
+import { NSelect, NBackTop } from "naive-ui";
+
 const stateStore = reactive({
   nextPage: 1,
   selectedValue: "US",
@@ -61,6 +63,8 @@ const stateStore = reactive({
 
 export default {
   components: {
+    NSelect,
+    NBackTop,
     Result,
     Loader,
     HomePagination,

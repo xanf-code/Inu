@@ -81,7 +81,12 @@
 </template>
 
 <script>
+import { NButton } from "naive-ui";
+
 export default {
+  components: {
+    NButton,
+  },
   props: [
     "goToFirstPage",
     "onLastPage",

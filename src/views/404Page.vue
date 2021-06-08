@@ -35,8 +35,12 @@
 
 <script>
 import { useRouter } from "vue-router";
+import { NButton } from "naive-ui";
 
 export default {
+  components: {
+    NButton,
+  },
   name: "ErrorPage",
   setup() {
     const router = useRouter();
