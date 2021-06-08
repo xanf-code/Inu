@@ -30,12 +30,14 @@ import IndividualInsiderCard from "../components/IndividualInsiderCard";
 const { results, loading, companyAPILoad } = companyAPI();
 import { onUnmounted, onMounted, ref } from "vue";
 const axios = require("axios");
+import VueApexCharts from "vue3-apexcharts";
 
 let dateData = ref([]);
 let valueData = ref([]);
 
 export default {
   components: {
+    apexchart: VueApexCharts,
     IndividualInsiderCard,
   },
   name: "CompanyDetails",
