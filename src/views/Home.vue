@@ -3,12 +3,13 @@
   <n-back-top :right="25" :bottom="20" />
   <!-- Selector Country -->
   <div class="tw-mx-4 tw-my-2">
-    <n-select
-      @update:value="getNewData"
-      placeholder="Select Country"
-      :options="options"
-      style="background-color: rgb(0 0 0)"
-    />
+    <n-config-provider :theme-overrides="themeOverrides">
+      <n-select
+        @update:value="getNewData"
+        placeholder="Select Country"
+        :options="options"
+      />
+    </n-config-provider>
   </div>
   <!-- Main -->
   <main
@@ -54,7 +55,25 @@ import topLevelAPI from "../store/toplevelAPI";
 import Loader from "../components/Loader";
 import { reactive } from "vue";
 import HomePagination from "../components/HomePagination";
-import { NSelect, NBackTop } from "naive-ui";
+import { NSelect, NBackTop, NConfigProvider } from "naive-ui";
+
+// 0049ff TEST COLOR
+
+const themeOverrides = {
+  Select: {
+    peers: {
+      InternalSelection: {
+        color: "#0b0e11",
+        textColor: "#ffffff",
+        colorActive: "#0b0e11",
+      },
+      InternalSelectMenu: {
+        color: "#0b0e11",
+        optionTextColor: "#ffffff",
+      },
+    },
+  },
+};
 
 const stateStore = reactive({
   nextPage: 1,
@@ -65,6 +84,7 @@ export default {
   components: {
     NSelect,
     NBackTop,
+    NConfigProvider,
     Result,
     Loader,
     HomePagination,
@@ -128,18 +148,11 @@ export default {
       onLastPage,
       goToFirstPage,
       goToLastPage,
+      themeOverrides,
       options: [
-        {
-          label: "Western Market",
-          disabled: true,
-        },
         {
           label: "United States",
           value: "US",
-        },
-        {
-          label: "Rest of the world",
-          disabled: true,
         },
         {
           label: "India",
