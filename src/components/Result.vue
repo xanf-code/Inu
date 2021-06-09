@@ -21,7 +21,7 @@
 <script>
 import InsiderCard from "@/components/InsiderCard";
 import topLevelAPI from "../store/toplevelAPI";
-import { onMounted, ref } from "vue";
+import { onMounted, ref, nextTick } from "vue";
 
 const navID = ref(null);
 
@@ -41,7 +41,8 @@ export default {
       if (id === null) {
         return;
       }
-      await document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      await nextTick();
+      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
     }
 
     onMounted(() => {
