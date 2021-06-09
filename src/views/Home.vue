@@ -23,7 +23,9 @@
     "
   >
     <!-- Insider Results -->
-    <Result :insider="state.results" />
+    <keep-alive>
+      <Result :insider="state.results" />
+    </keep-alive>
   </main>
   <!-- Middle Loader -->
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
@@ -53,7 +55,7 @@
 import Result from "@/components/Result";
 import topLevelAPI from "../store/toplevelAPI";
 import Loader from "../components/Loader";
-import { reactive } from "vue";
+import { reactive, onBeforeMount } from "vue";
 import HomePagination from "../components/HomePagination";
 import { NSelect, NBackTop, NConfigProvider } from "naive-ui";
 
@@ -92,7 +94,13 @@ export default {
   setup() {
     const { state, loadAllAPI } = topLevelAPI();
 
-    loadAllAPI(stateStore.nextPage, stateStore.selectedValue);
+    onBeforeMount(() => {
+      if (state.results.length > 0) {
+        return;
+      } else {
+        loadAllAPI(stateStore.nextPage, stateStore.selectedValue);
+      }
+    });
 
     const onNextPage = () => {
       if (state.isNext == false) {

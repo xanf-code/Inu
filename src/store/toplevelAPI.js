@@ -30,16 +30,16 @@ export default function topLevelAPI() {
                 state.isLast = arrayData.isLastPageExist;
                 state.isNext = arrayData.isNextPageExist;
                 state.dataPresent = true;
+                state.loading = false;
             }
             else {
                 state.dataPresent = false;
+                state.loading = false;
                 state.results = [];
                 state.error = "No data found. Please try again later";
             }
         } catch (e) {
             console.error(e);
-        } finally {
-            state.loading = false;
         }
     };
     return {

@@ -3,26 +3,57 @@
     class="tw-flex tw-flex-col"
     v-for="individual in insider"
     :key="individual._id"
+    :id="individual._id"
   >
-    <transition appear tag="div" name="insider">
-      <router-link
-        :to="`/info/${
-          individual.InsiderName == '' ? 'Anonymous' : individual.InsiderName
-        }?symbol=${individual.CompanyName}&cc=${individual.CountryCode}`"
-      >
+    <router-link
+      :to="`/info/${
+        individual.InsiderName == '' ? 'Anonymous' : individual.InsiderName
+      }?symbol=${individual.CompanyName}&cc=${individual.CountryCode}`"
+      @click="navigationStarts(individual._id)"
+    >
+      <transition appear tag="div" name="insider">
         <InsiderCard :result="individual" />
-      </router-link>
-    </transition>
+      </transition>
+    </router-link>
   </div>
 </template>
 
 <script>
 import InsiderCard from "@/components/InsiderCard";
+import topLevelAPI from "../store/toplevelAPI";
+import { onMounted, ref } from "vue";
+
+const navID = ref("null");
+
 export default {
+  props: ["insider"],
   components: {
     InsiderCard,
   },
-  props: ["insider"],
+  setup() {
+    const { state } = topLevelAPI();
+
+    function navigationStarts(id) {
+      navID.value = id;
+    }
+
+    async function scrollIntoView(id) {
+      if (id === "null") {
+        return;
+      }
+      await document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+    }
+
+    onMounted(() => {
+      if (state.results.length > 0) {
+        scrollIntoView(navID.value);
+      } else {
+        return;
+      }
+    });
+
+    return { navigationStarts };
+  },
 };
 </script>
 
