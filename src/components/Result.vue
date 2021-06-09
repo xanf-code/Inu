@@ -38,15 +38,15 @@ export default {
     }
 
     async function scrollIntoView(id) {
-      if (id === null) {
-        return;
-      }
+      // if (id === null) {
+      //   return;
+      // }
+      await nextTick();
       await document.getElementById(id).scrollIntoView({ behavior: "smooth" });
     }
 
-    onMounted(async () => {
+    onMounted(() => {
       if (state.results.length > 0) {
-        await nextTick();
         scrollIntoView(navID.value);
         navID.value = null;
       } else {
