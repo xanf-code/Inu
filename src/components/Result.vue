@@ -38,9 +38,9 @@ export default {
     }
 
     async function scrollIntoView(id) {
-      // if (id === null) {
-      //   return;
-      // }
+      if (id === null) {
+        return;
+      }
       await document.getElementById(id).scrollIntoView({ behavior: "smooth" });
     }
 
