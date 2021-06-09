@@ -21,7 +21,7 @@
 <script>
 import InsiderCard from "@/components/InsiderCard";
 import topLevelAPI from "../store/toplevelAPI";
-import { onMounted, ref } from "vue";
+import { onActivated, ref } from "vue";
 
 const navID = ref("null");
 
@@ -44,7 +44,7 @@ export default {
       await document.getElementById(id).scrollIntoView({ behavior: "smooth" });
     }
 
-    onMounted(() => {
+    onActivated(() => {
       if (state.results.length > 0) {
         scrollIntoView(navID.value);
       } else {

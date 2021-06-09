@@ -55,7 +55,7 @@
 import Result from "@/components/Result";
 import topLevelAPI from "../store/toplevelAPI";
 import Loader from "../components/Loader";
-import { reactive, onBeforeMount } from "vue";
+import { reactive, onMounted } from "vue";
 import HomePagination from "../components/HomePagination";
 import { NSelect, NBackTop, NConfigProvider } from "naive-ui";
 
@@ -94,7 +94,7 @@ export default {
   setup() {
     const { state, loadAllAPI } = topLevelAPI();
 
-    onBeforeMount(() => {
+    onMounted(() => {
       if (state.results.length > 0) {
         return;
       } else {
