@@ -21,9 +21,9 @@
 <script>
 import InsiderCard from "@/components/InsiderCard";
 import topLevelAPI from "../store/toplevelAPI";
-import { onActivated, ref } from "vue";
+import { onMounted, ref } from "vue";
 
-const navID = ref("null");
+const navID = ref(null);
 
 export default {
   props: ["insider"],
@@ -38,16 +38,16 @@ export default {
     }
 
     function scrollIntoView(id) {
-      if (id === "null") {
+      if (id === null) {
         return;
       }
       document.getElementById(id).scrollIntoView({ behavior: "smooth" });
     }
 
-    onActivated(() => {
+    onMounted(() => {
       if (state.results.length > 0) {
         scrollIntoView(navID.value);
-        navID.value = "null";
+        navID.value = null;
       } else {
         return;
       }
