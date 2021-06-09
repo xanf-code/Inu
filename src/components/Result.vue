@@ -41,12 +41,12 @@ export default {
       if (id === null) {
         return;
       }
-      await nextTick();
-      document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      await document.getElementById(id).scrollIntoView({ behavior: "smooth" });
     }
 
-    onMounted(() => {
+    onMounted(async () => {
       if (state.results.length > 0) {
+        await nextTick();
         scrollIntoView(navID.value);
         navID.value = null;
       } else {
