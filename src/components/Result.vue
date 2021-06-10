@@ -37,11 +37,12 @@ export default {
       navID.value = id;
     }
 
-    async function scrollIntoView(id) {
+    function scrollIntoView(id) {
       if (id === null) {
         return;
       }
-      await document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      let element = document.getElementById(id);
+      element.scrollIntoView({ behavior: "smooth", block: "end" });
     }
 
     onMounted(async () => {
