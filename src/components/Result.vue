@@ -20,7 +20,7 @@
 
 <script>
 import InsiderCard from "@/components/InsiderCard";
-import topLevelAPI from "../store/toplevelAPI";
+// import topLevelAPI from "../store/toplevelAPI";
 import { onMounted, ref, nextTick } from "vue";
 
 const navID = ref(null);
@@ -31,29 +31,29 @@ export default {
     InsiderCard,
   },
   setup() {
-    const { state } = topLevelAPI();
+    // const { state } = topLevelAPI();
 
     function navigationStarts(id) {
       navID.value = id;
     }
 
-    function scrollIntoView(id) {
+    async function scrollIntoView(id) {
       if (id === null) {
         return;
       }
       let element = document.getElementById(id);
-      element.scrollIntoView({ behavior: "smooth", block: "end" });
+      await nextTick(() => {
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
     }
 
-    onMounted(async () => {
-      if (state.results.length > 0) {
-        await nextTick(() => {
-          scrollIntoView(navID.value);
-        });
-        navID.value = null;
-      } else {
-        return;
-      }
+    onMounted(() => {
+      // if (state.results.length > 0) {
+      //   // navID.value = null;
+      // } else {
+      //   return;
+      // }
+      scrollIntoView(navID.value);
     });
 
     return { navigationStarts };
