@@ -57,8 +57,6 @@ import { reactive, onMounted } from "vue";
 import HomePagination from "../components/HomePagination";
 import { NSelect, NBackTop, NConfigProvider } from "naive-ui";
 
-// 0049ff TEST COLOR
-
 const themeOverrides = {
   Select: {
     peers: {
@@ -66,10 +64,14 @@ const themeOverrides = {
         color: "#0b0e11",
         textColor: "#ffffff",
         colorActive: "#0b0e11",
+        borderHover: "#4137ff",
       },
       InternalSelectMenu: {
-        color: "#0b0e11",
+        color: "#000000",
         optionTextColor: "#ffffff",
+        optionCheckColor: "#000000",
+        actionDividerColor: "#000000",
+        optionColorPending: "#393e46",
       },
     },
   },
