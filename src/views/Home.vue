@@ -2,7 +2,7 @@
   <!-- Back To Top Widget -->
   <n-back-top :right="25" :bottom="20" />
   <!-- Selector Country -->
-  <div class="tw-mx-4 tw-my-2">
+  <div class="tw-mx-4 tw-mt-2">
     <n-config-provider :theme-overrides="themeOverrides">
       <n-select
         @update:value="getNewData"

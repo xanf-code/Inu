@@ -1,6 +1,16 @@
 <template>
   <div
-    class="tw-box-border tw-px-2 tw-py-2 tw-bg-black tw-rounded-md tw-cursor-pointer tw-mr-1.5 tw-ml-1.5 tw-mb-1.5"
+    class="
+      tw-box-border
+      tw-px-2
+      tw-py-2
+      tw-bg-black
+      tw-rounded-md
+      tw-cursor-pointer
+      tw-mr-1.5
+      tw-ml-1.5
+      tw-mb-1.5
+    "
   >
     <!-- Row-1 [RANK, NAME, CONTRACT] -->
     <div class="tw-flex tw-flex-row tw-justify-between">
@@ -14,44 +24,62 @@
           </h1>
         </div>
       </div>
-      <div
-        data-bs-toggle="tooltip"
-        data-bs-placement="top"
-        :title="`${results.contract === true ? 'Contract' : 'No Contract'}`"
-      >
-        <svg
-          data-bs-toggle="tooltip"
-          data-bs-placement="top"
-          :title="`${results.contract === true ? 'Contract' : 'No Contract'}`"
-          xmlns="http://www.w3.org/2000/svg"
-          :class="`${
-            results.contract === true ? 'tw-text-green-700' : 'tw-text-red-600'
-          }`"
-          class="tw-h-5 tw-mr-1.5 tw-mt-1"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-          />
-        </svg>
-      </div>
+      <n-tooltip placement="top-start" trigger="hover">
+        <template #trigger>
+          <svg
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            :title="`${results.contract === true ? 'Contract' : 'No Contract'}`"
+            xmlns="http://www.w3.org/2000/svg"
+            :class="`${
+              results.contract === true
+                ? 'tw-text-green-700'
+                : 'tw-text-red-600'
+            }`"
+            class="tw-h-5 tw-mr-1.5 tw-mt-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            />
+          </svg>
+        </template>
+        {{ results.contract === true ? "Contract" : "No Contract" }}
+      </n-tooltip>
     </div>
     <!-- Row-1 Ends -->
     <!-- Row-2 Quantity -->
     <div class="tw-mt-2">
       <div class="tw-flex tw-flex-row tw-justify-start">
         <h1
-          class="tw-font-poppins tw-ml-2 tw-font-bold tw-text-purple-800 tw-self-center tw-mr-2.5"
+          class="
+            tw-font-poppins
+            tw-ml-2
+            tw-font-bold
+            tw-text-purple-800
+            tw-self-center
+            tw-mr-2.5
+          "
         >
           Current Quantity
         </h1>
         <div
-          class="tw-flex tw-box-border tw-bg-gray-900 tw-rounded-md tw-px-1 tw-font-semibold tw-font-poppins tw-self-center tw-py-1.5"
+          class="
+            tw-flex
+            tw-box-border
+            tw-bg-gray-900
+            tw-rounded-md
+            tw-px-1
+            tw-font-semibold
+            tw-font-poppins
+            tw-self-center
+            tw-py-1.5
+          "
         >
           <div
             data-bs-toggle="tooltip"
@@ -84,12 +112,29 @@
     <div class="tw-mt-2">
       <div class="tw-flex tw-flex-row tw-justify-start">
         <h1
-          class="tw-font-poppins tw-ml-2 tw-font-bold tw-text-purple-800 tw-self-center tw-mr-2.5"
+          class="
+            tw-font-poppins
+            tw-ml-2
+            tw-font-bold
+            tw-text-purple-800
+            tw-self-center
+            tw-mr-2.5
+          "
         >
           Quantity Change
         </h1>
         <div
-          class="tw-flex tw-box-border tw-bg-gray-900 tw-rounded-md tw-px-1 tw-font-semibold tw-font-poppins tw-self-center tw-py-1.5"
+          class="
+            tw-flex
+            tw-box-border
+            tw-bg-gray-900
+            tw-rounded-md
+            tw-px-1
+            tw-font-semibold
+            tw-font-poppins
+            tw-self-center
+            tw-py-1.5
+          "
         >
           <TrendingDownIcon
             v-if="results.quantityChanges.includes('-')"
@@ -118,12 +163,26 @@
     <div class="tw-mt-2 tw-mb-2">
       <div class="tw-flex tw-flex-row tw-justify-start">
         <h1
-          class="tw-font-poppins tw-ml-2 tw-font-bold tw-text-purple-800 tw-self-center tw-mr-2.5"
+          class="
+            tw-font-poppins
+            tw-ml-2
+            tw-font-bold
+            tw-text-purple-800
+            tw-self-center
+            tw-mr-2.5
+          "
         >
           % Change
         </h1>
         <div
-          class="tw-flex tw-px-1 tw-font-semibold tw-font-poppins tw-self-center tw-py-1.5"
+          class="
+            tw-flex
+            tw-px-1
+            tw-font-semibold
+            tw-font-poppins
+            tw-self-center
+            tw-py-1.5
+          "
         >
           <ChevronDownIcon
             v-if="results.percentageChange.includes('-')"
@@ -159,10 +218,12 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@heroicons/vue/outline";
+import { NTooltip } from "naive-ui";
 
 export default {
   props: ["results"],
   components: {
+    NTooltip,
     TickerBox,
     TrendingUpIcon,
     TrendingDownIcon,

@@ -19,14 +19,6 @@ const routes = [
     component: () => import('@/views/InsiderPage.vue'),
   },
   {
-    path: '/download',
-    name: 'DownloadPage',
-    component: () => import('@/views/Download.vue'),
-    meta: {
-      title: "InsiderShibu | Downloads"
-    },
-  },
-  {
     path: '/whalewatch',
     name: 'Whales',
     component: () => import('@/views/Whales.vue'),
