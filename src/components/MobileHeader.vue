@@ -64,30 +64,20 @@
           />
         </div>
       </router-link>
-      <router-link to="#">
-        <div @click="state.dropdown = false">
-          <Icon
-            icon="https://img.icons8.com/material/50/ffffff/feedback--v2.png"
-            text="Feedback"
-          />
-        </div>
-      </router-link>
-      <router-link to="#">
-        <div @click="state.dropdown = false">
-          <Icon
-            icon="https://img.icons8.com/material-sharp/24/ffffff/privacy-policy.png"
-            text="Privacy Policy"
-          />
-        </div>
-      </router-link>
-      <router-link to="#">
-        <div @click="state.dropdown = false">
-          <Icon
-            icon="https://img.icons8.com/material-sharp/50/ffffff/more.png"
-            text="More"
-          />
-        </div>
-      </router-link>
+      <div class="tw-justify-start tw-px-4 tw-mx-2 tw-mb-3 tw-py-4">
+        <n-button color="#8a2be2" @click="handleClick">
+          <div class="tw-flex">
+            <img src="https://img.icons8.com/android/24/ffffff/twitter.png" />
+            <h1
+              class="
+                tw-flex tw-items-center tw-pl-2 tw-font-poppins tw-font-medium
+              "
+            >
+              Get updates on Twitter
+            </h1>
+          </div>
+        </n-button>
+      </div>
     </div>
   </transition>
 </template>
@@ -96,6 +86,7 @@
 import { MenuAlt1Icon, XIcon } from "@heroicons/vue/solid";
 import NavStore from "../store/NavStore";
 import Icon from "../components/MenuItem";
+import { NButton } from "naive-ui";
 
 export default {
   name: "MobileHeader",
@@ -103,10 +94,15 @@ export default {
     MenuAlt1Icon,
     XIcon,
     Icon,
+    NButton,
   },
   setup() {
     const { state } = NavStore();
+    function handleClick() {
+      window.open("https://twitter.com/iamlardBendtner", "_blank");
+    }
     return {
+      handleClick,
       state,
     };
   },
