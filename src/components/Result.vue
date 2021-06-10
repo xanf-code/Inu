@@ -20,8 +20,8 @@
 
 <script>
 import InsiderCard from "@/components/InsiderCard";
-// import topLevelAPI from "../store/toplevelAPI";
-import { onMounted, ref, nextTick } from "vue";
+import topLevelAPI from "../store/toplevelAPI";
+import { onMounted, ref } from "vue";
 
 const navID = ref(null);
 
@@ -31,7 +31,7 @@ export default {
     InsiderCard,
   },
   setup() {
-    // const { state } = topLevelAPI();
+    const { state } = topLevelAPI();
 
     function navigationStarts(id) {
       navID.value = id;
@@ -42,18 +42,18 @@ export default {
         return;
       }
       let element = document.getElementById(id);
-      await nextTick(() => {
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
-      });
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
     }
 
     onMounted(() => {
-      // if (state.results.length > 0) {
-      //   // navID.value = null;
-      // } else {
-      //   return;
-      // }
-      scrollIntoView(navID.value);
+      if (state.results.length > 0) {
+        setTimeout(function () {
+          scrollIntoView(navID.value);
+          navID.value = null;
+        }, 1000);
+      } else {
+        return;
+      }
     });
 
     return { navigationStarts };
