@@ -47,8 +47,9 @@ export default {
 
     onMounted(async () => {
       if (state.results.length > 0) {
-        await nextTick();
-        scrollIntoView(navID.value);
+        await nextTick(() => {
+          scrollIntoView(navID.value);
+        });
         navID.value = null;
       } else {
         return;
