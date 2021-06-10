@@ -23,9 +23,7 @@
     "
   >
     <!-- Insider Results -->
-    <keep-alive>
-      <Result :insider="state.results" />
-    </keep-alive>
+    <Result :insider="state.results" />
   </main>
   <!-- Middle Loader -->
   <main v-else class="tw-flex tw-h-screen tw-justify-center tw-self-center">
