@@ -29,10 +29,13 @@
       <h1 class="tw-ml-4 tw-my-4 tw-font-poppins tw-font-bold tw-text-lg">
         Trending Stonks ⚡🔥
       </h1>
-      <div>
+      <div v-if="!state.loading">
         <TrendingComponent :TrendingData="state.results" />
       </div>
     </main>
+    <div class="tw-flex tw-justify-center" v-if="state.loading">
+      <Loader />
+    </div>
     <!-- Footer -->
     <!-- <footer class="tw-bg-black tw-relative tw-bottom-0">
       <div class="tw-pl-4 tw-py-3">Footer</div>
@@ -45,13 +48,14 @@ import trendingNow from "../store/trendings";
 import TrendingComponent from "../components/TrendingComponent.vue";
 import { onMounted } from "vue";
 import IntroMainContent from "../components/IntroMainContent";
-// const trendingList = refs([]);
+import Loader from "../components/Loader";
 
 export default {
   name: "IntroView",
   components: {
     TrendingComponent,
     IntroMainContent,
+    Loader,
   },
   setup() {
     const { state, trendingAPI } = trendingNow();
