@@ -22,7 +22,10 @@ export default {
     });
 
     function checkRoute() {
-      if (this.$route.name === "errorpage") {
+      if (
+        this.$route.name === "errorpage" ||
+        this.$route.name === "IntroView"
+      ) {
         navState.navigation = true;
         return;
       }

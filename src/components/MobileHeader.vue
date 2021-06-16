@@ -21,7 +21,7 @@
       "
     />
     <div>
-      <router-link to="/">
+      <router-link to="/en">
         <transition name="title" appear>
           <div
             class="

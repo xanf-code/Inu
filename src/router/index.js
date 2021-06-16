@@ -3,10 +3,19 @@ import Home from '@/views/Home.vue'
 import '../../node_modules/nprogress/nprogress.css';
 import NProgress from 'nprogress';
 import NotFoundPage from '@/views/404Page.vue'
+import IntroView from '@/views/IntroView.vue'
 
 const routes = [
   {
     path: '/',
+    name: 'IntroView',
+    component: IntroView,
+    meta: {
+      title: "InsiderShibu | Track InsiderStonks"
+    },
+  },
+  {
+    path: '/en',
     name: 'Home',
     component: Home,
     meta: {

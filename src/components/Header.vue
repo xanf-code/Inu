@@ -7,7 +7,7 @@
     "
   >
     <div>
-      <router-link to="/">
+      <router-link to="/en">
         <div
           class="
             tw-self-center
