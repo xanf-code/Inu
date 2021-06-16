@@ -12,7 +12,7 @@ export default function trendingNow() {
         state.loading = true;
         try {
             const response = await axios.get(
-                `http://screenerapi.herokuapp.com/trending`
+                `https://screenerapi.herokuapp.com/trending`
             );
             state.results = response.data.result;
             state.length = response.data.length;
