@@ -20,7 +20,7 @@
           "
         >
           <h1 class="tw-text-white">Shibu&nbsp;</h1>
-          <h1 class="tw-text-purple-600">Insider🐕🚀🚀</h1>
+          <h1 class="tw-text-purple-600">Insider🐕</h1>
         </div>
       </router-link>
     </div>
