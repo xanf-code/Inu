@@ -2,7 +2,7 @@
   <div class="tw-flex tw-flex-col tw-h-screen">
     <!-- Header -->
     <header class="tw-bg-black tw-h-15">
-      <div>
+      <div class="tw-flex tw-justify-between">
         <router-link to="/">
           <div
             class="
@@ -20,6 +20,18 @@
             <h1 class="tw-text-purple-600">Insider🐕🚀🚀</h1>
           </div>
         </router-link>
+        <div class="tw-self-center">
+          <a
+            href="https://www.producthunt.com/posts/insider-shibu?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-insider-shibu"
+            target="_blank"
+            ><img
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=300524&theme=dark"
+              alt="Insider Shibu - See what's happening now in the insiders market | Product Hunt"
+              style="width: 220px; height: 40px"
+              width="220"
+              height="40"
+          /></a>
+        </div>
       </div>
     </header>
     <main class="tw-overflow-y-auto">
