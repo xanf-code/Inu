@@ -4,7 +4,11 @@
 
 # shibu 🐕🐶
 
-Know what the insiders are upto 👀
+Insiders (directors, board members, major shareholders) have access to non-public information about what’s happening in the company. Insider trading reveals whether insiders trust in their company and whether they are willing to bet their own money on further growth in the share price or, on the contrary, they sell because they believe that the price of the shares will fall.
+
+Understand how insiders think and earn with them.
+
+Watch insider trading in companies like Facebook, Amazon, Tesla Motors or Google.
 
 ## Tech Stack
 
